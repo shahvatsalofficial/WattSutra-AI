@@ -22,6 +22,8 @@ Compare your `my-audit/audit.md` with [the committed sample](evidence/samples/au
 
 Severity scale: info, low, medium, high, critical. Status: verified, failed, unknown, not-run. Missing data produces `unknown` or `not-run`, never `verified`.
 
+The audit raises each fixture to at least 12 samples so shared CI runners cannot turn the live comparison into noise (a 5-sample version flaked on two CI jobs and was fixed in this way).
+
 ## Results (sample run, Node 24, Windows x64)
 
 Source: [`evidence/samples/audit.json`](evidence/samples/audit.json). Totals: **18 checks, 17 verified, 0 failed, 0 unknown, 1 not-run**. Verdict **PASS** (scoped).
@@ -51,15 +53,15 @@ Source: [`evidence/samples/audit.json`](evidence/samples/audit.json). Totals: **
 
 | Item | Value |
 | --- | --- |
-| Baseline `trial`, n=20000, 5 samples | mean 1.629 ms |
-| Candidate `sieve`, n=20000, 5 samples | mean 0.254 ms |
-| Ratio (baseline / candidate) | 6.42x |
-| 95% bootstrap interval of ratio | 3.09 to 14.05 |
-| Baseline coefficient of variation | 18.9% |
+| Baseline `trial`, n=20000, 12 samples | mean 0.486 ms |
+| Candidate `sieve`, n=20000, 12 samples | mean 0.096 ms |
+| Ratio (baseline / candidate) | 5.06x |
+| 95% bootstrap interval of ratio | 3.79 to 6.56 |
+| Baseline coefficient of variation | 5.6% |
 | Latency gate | PASS |
 | Energy, carbon, cost gates | NOT_RUN |
 
-Reading this honestly: the interval is wide because there are only 5 short samples on a shared laptop and the CV is high. The result supports "sieve is clearly faster than trial division for this n on this machine". It supports **nothing** about energy.
+Reading this honestly: the interval is still wide because only 12 sub-millisecond samples were taken on a shared laptop. The result supports "sieve is clearly faster than trial division for this n on this machine". It supports **nothing** about energy.
 
 ### Modeled estimate in the same run
 
