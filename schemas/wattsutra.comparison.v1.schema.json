@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shahvatsalofficial/WattSutra-AI/schemas/wattsutra.comparison.v1.schema.json",
+  "title": "WattSutra comparison",
+  "type": "object",
+  "required": [
+    "schema",
+    "baseline",
+    "candidate",
+    "sameWorkload",
+    "qualityEquivalent",
+    "environmentParity",
+    "latencyRatio",
+    "latencyRatioInterval95",
+    "gates",
+    "energySaving",
+    "carbonSaving",
+    "costSaving"
+  ],
+  "properties": {
+    "schema": {
+      "const": "wattsutra.comparison.v1"
+    },
+    "sameWorkload": {
+      "const": true
+    },
+    "qualityEquivalent": {
+      "type": "boolean"
+    },
+    "latencyRatio": {
+      "type": "number",
+      "minimum": 0
+    },
+    "energySaving": {
+      "type": "null"
+    },
+    "carbonSaving": {
+      "type": "null"
+    },
+    "costSaving": {
+      "type": "null"
+    },
+    "gates": {
+      "type": "object",
+      "required": [
+        "latency",
+        "energy",
+        "carbon",
+        "cost"
+      ],
+      "properties": {
+        "latency": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "REVIEW_REQUIRED",
+            "NOT_RUN"
+          ]
+        },
+        "energy": {
+          "const": "NOT_RUN"
+        },
+        "carbon": {
+          "const": "NOT_RUN"
+        },
+        "cost": {
+          "const": "NOT_RUN"
+        }
+      }
+    }
+  }
+}

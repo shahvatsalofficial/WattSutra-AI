@@ -1,0 +1,249 @@
+{
+  "schema": "wattsutra.agents.v1",
+  "product": "WattSutra AI",
+  "createdBy": "Vatsal Shah",
+  "agents": [
+    {
+      "id": "wattsutra-prime",
+      "name": "WattSutra Chief Orchestrator",
+      "role": "Chief Orchestrator",
+      "skill": "skills/wattsutra-prime/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Determine scope, coordinate independent reviewers, enforce evidence taxonomy and approval gates.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra audit",
+        "wattsutra compare",
+        "wattsutra verify"
+      ]
+    },
+    {
+      "id": "wattsutra-workload-architect",
+      "name": "WattSutra Workload Architect",
+      "role": "Workload Architect",
+      "skill": "skills/wattsutra-workload-architect/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Define comparable functional units, exact dataset, quality checks and repeatable workloads.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra bench"
+      ]
+    },
+    {
+      "id": "wattsutra-probe-pilot",
+      "name": "WattSutra Probe Pilot",
+      "role": "Probe Pilot",
+      "skill": "skills/wattsutra-probe-pilot/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Audit measurement instruments, collection boundaries, sampling and overhead.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra doctor"
+      ]
+    },
+    {
+      "id": "wattsutra-latency-lens",
+      "name": "WattSutra Latency Lens",
+      "role": "Latency Lens",
+      "skill": "skills/wattsutra-latency-lens/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Interpret wall-clock time, percentiles, warmup, jitter and latency regressions.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra bench",
+        "wattsutra compare"
+      ]
+    },
+    {
+      "id": "wattsutra-cpu-profiler",
+      "name": "WattSutra CPU Profiler",
+      "role": "CPU Profiler",
+      "skill": "skills/wattsutra-cpu-profiler/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Inspect CPU time, utilization semantics, scheduling interference and attribution caveats.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra bench"
+      ]
+    },
+    {
+      "id": "wattsutra-memory-sentinel",
+      "name": "WattSutra Memory Sentinel",
+      "role": "Memory Sentinel",
+      "skill": "skills/wattsutra-memory-sentinel/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Detect peak RSS, heap use and memory attribution limitations.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra bench"
+      ]
+    },
+    {
+      "id": "wattsutra-gpu-scout",
+      "name": "WattSutra GPU Scout",
+      "role": "GPU Scout",
+      "skill": "skills/wattsutra-gpu-scout/SKILL.md",
+      "status": "role-instructions-only",
+      "objective": "Discover optional GPU metrics and label unsupported/untested sensors.",
+      "necessity": "advisory",
+      "backedBy": [
+        "wattsutra doctor"
+      ]
+    },
+    {
+      "id": "wattsutra-power-meter",
+      "name": "WattSutra Power Meter",
+      "role": "Power Meter",
+      "skill": "skills/wattsutra-power-meter/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Verify actual hardware meter inputs and distinguish measured from modeled energy.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra estimate"
+      ]
+    },
+    {
+      "id": "wattsutra-carbon-methodologist",
+      "name": "WattSutra Carbon Methodologist",
+      "role": "Carbon Methodologist",
+      "skill": "skills/wattsutra-carbon-methodologist/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Review energy boundaries, carbon-intensity factors, SCI functional units and embodied allocation.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra estimate"
+      ]
+    },
+    {
+      "id": "wattsutra-cost-lens",
+      "name": "WattSutra Cost Lens",
+      "role": "Cost Lens",
+      "skill": "skills/wattsutra-cost-lens/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Track independently supplied price assumptions, currency and billing evidence.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra estimate"
+      ]
+    },
+    {
+      "id": "wattsutra-finops-auditor",
+      "name": "WattSutra FinOps Auditor",
+      "role": "FinOps Auditor",
+      "skill": "skills/wattsutra-finops-auditor/SKILL.md",
+      "status": "role-instructions-only",
+      "objective": "Assess cloud spend optimization with procurement constraints and price provenance.",
+      "necessity": "advisory",
+      "backedBy": []
+    },
+    {
+      "id": "wattsutra-quality-gate",
+      "name": "WattSutra Quality Gate",
+      "role": "Quality Gate",
+      "skill": "skills/wattsutra-quality-gate/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Ensure baseline and candidate satisfy identical correctness/quality criteria.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra compare",
+        "wattsutra verify"
+      ]
+    },
+    {
+      "id": "wattsutra-fairness-auditor",
+      "name": "WattSutra Fairness Auditor",
+      "role": "Fairness Auditor",
+      "skill": "skills/wattsutra-fairness-auditor/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Audit workload parity, environment parity, confounders and benchmark comparability.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra compare"
+      ]
+    },
+    {
+      "id": "wattsutra-variance-analyst",
+      "name": "WattSutra Variance Analyst",
+      "role": "Variance Analyst",
+      "skill": "skills/wattsutra-variance-analyst/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Review sample size, spread, intervals and statistical inference limits.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra compare"
+      ]
+    },
+    {
+      "id": "wattsutra-optimization-planner",
+      "name": "WattSutra Optimization Planner",
+      "role": "Optimization Planner",
+      "skill": "skills/wattsutra-optimization-planner/SKILL.md",
+      "status": "role-instructions-only",
+      "objective": "Propose low-risk experiments without asserting unmeasured savings.",
+      "necessity": "advisory",
+      "backedBy": []
+    },
+    {
+      "id": "wattsutra-regression-watch",
+      "name": "WattSutra Regression Watch",
+      "role": "Regression Watch",
+      "skill": "skills/wattsutra-regression-watch/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Compare versioned baselines and flag supported performance regressions.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra compare"
+      ]
+    },
+    {
+      "id": "wattsutra-evidence-ledger",
+      "name": "WattSutra Evidence Ledger",
+      "role": "Evidence Ledger",
+      "skill": "skills/wattsutra-evidence-ledger/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Create hashed, reproducible measurements and provenance references.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra verify",
+        "wattsutra audit"
+      ]
+    },
+    {
+      "id": "wattsutra-privacy-guard",
+      "name": "WattSutra Privacy Guard",
+      "role": "Privacy Guard",
+      "skill": "skills/wattsutra-privacy-guard/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Redact credentials and prohibit unauthorized telemetry exports.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra audit"
+      ]
+    },
+    {
+      "id": "wattsutra-ide-bridge",
+      "name": "WattSutra IDE Bridge",
+      "role": "IDE Bridge",
+      "skill": "skills/wattsutra-ide-bridge/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Map portable SKILL.md contracts to supported hosts and document actual verification.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra install"
+      ]
+    },
+    {
+      "id": "wattsutra-report-composer",
+      "name": "WattSutra Report Composer",
+      "role": "Report Composer",
+      "skill": "skills/wattsutra-report-composer/SKILL.md",
+      "status": "role-instructions-backed-by-cli",
+      "objective": "Publish accessible, source-linked JSON/Markdown/HTML reports and caveats.",
+      "necessity": "core",
+      "backedBy": [
+        "wattsutra report",
+        "wattsutra audit"
+      ]
+    }
+  ]
+}

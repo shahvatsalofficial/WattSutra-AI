@@ -1,0 +1,16 @@
+{
+  "default": "read-only",
+  "approvedOperations": [
+    "local-allowlisted-benchmark",
+    "explicit-report-output"
+  ],
+  "approvalRequired": [
+    "download",
+    "global-install",
+    "arbitrary-command",
+    "remote-observability",
+    "costly-inference",
+    "production-workload",
+    "system-sensors"
+  ]
+}

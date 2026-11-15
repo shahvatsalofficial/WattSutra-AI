@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shahvatsalofficial/WattSutra-AI/schemas/wattsutra.estimate.v1.schema.json",
+  "title": "WattSutra estimate",
+  "type": "object",
+  "required": [
+    "schema",
+    "sourceHash",
+    "method",
+    "estimated",
+    "observed",
+    "unknown",
+    "assumptions",
+    "caveats"
+  ],
+  "properties": {
+    "schema": {
+      "const": "wattsutra.estimate.v1"
+    },
+    "sourceHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "method": {
+      "const": "explicit-inputs-only"
+    },
+    "unknown": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "caveats": {
+      "type": "array",
+      "minItems": 1
+    }
+  }
+}

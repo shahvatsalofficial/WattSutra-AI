@@ -1,0 +1,17 @@
+{
+  "acceptedKinds": [
+    "measured",
+    "imported-meter-observation",
+    "modeled",
+    "unknown",
+    "not-run"
+  ],
+  "mustInclude": [
+    "source",
+    "unit",
+    "scope",
+    "methodology"
+  ],
+  "noDefaultCarbonFactor": true,
+  "noDefaultPrice": true
+}

@@ -1,0 +1,559 @@
+{
+  "schema": "wattsutra.audit.v1",
+  "toolVersion": "0.2.0",
+  "generatedAt": "2026-11-10T20:52:26.985Z",
+  "environment": {
+    "node": "v24.15.0",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "verdict": "PASS",
+  "scope": "Evidence integrity, claim hygiene, comparison fairness and packaging. Energy, carbon and cost gates are NOT_RUN: no hardware meter was used.",
+  "totals": {
+    "checks": 18,
+    "verified": 17,
+    "failed": 0,
+    "unknown": 0,
+    "notRun": 1,
+    "failedBySeverity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    }
+  },
+  "checks": [
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A01",
+      "title": "Benchmark runs verify and keep quality parity",
+      "status": "verified",
+      "evidence": "baseline 1c8ad9a86653d4ee56f8bde7a474897f99eebd0a3665df5aa9a2981a35ec211f candidate a7cf8404703144c843dede24adf6e51d6f2d8a6033ed3152a15a9c0098f1ef5b; prime count 2262, sum 21171191",
+      "command": "wattsutra bench --manifest fixtures/baseline.json",
+      "risk": "A faster variant that computes a different answer would be reported as an improvement",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A02",
+      "title": "Edited reports are rejected (integrity hash)",
+      "status": "verified",
+      "evidence": "mutated wallMs.mean; verifyRun threw integrity mismatch",
+      "command": "node --test tests/",
+      "risk": "Silent result tampering",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A03",
+      "title": "Internally inconsistent reports are rejected even with a recomputed hash",
+      "status": "verified",
+      "evidence": "mean edited, hash recomputed; validateRunShape recomputed stats from samples and refused",
+      "command": "node --test tests/",
+      "risk": "Hash alone proves only no later edits, not honest content. A fully re-derived forgery (samples and hash) is NOT detectable without signing",
+      "action": "Optional Sigstore signing is on the roadmap"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A04",
+      "title": "Measured runs contain no energy, carbon or cost values",
+      "status": "verified",
+      "evidence": "energyKWh/carbonGCO2e/cost are null; injected energyKWh=0.5 was refused",
+      "command": "wattsutra bench",
+      "risk": "CPU time presented as joules or CO2e",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A05",
+      "title": "Incomparable workloads are refused",
+      "status": "verified",
+      "evidence": "n=20000 vs n=3000 refused",
+      "command": "wattsutra compare",
+      "risk": "Apples-to-oranges speedup claims",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A06",
+      "title": "Quality mismatch yields a FAIL gate",
+      "status": "verified",
+      "evidence": "gate=FAIL",
+      "command": "wattsutra compare",
+      "risk": "Speedup accepted although answers differ",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A07",
+      "title": "Environment mismatch downgrades the gate to REVIEW_REQUIRED",
+      "status": "verified",
+      "evidence": "mismatched: cpuModel",
+      "command": "wattsutra compare",
+      "risk": "Cross-machine numbers shown as a like-for-like result",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A08",
+      "title": "Too few samples never earns PASS",
+      "status": "verified",
+      "evidence": "n=2 per run, gate=REVIEW_REQUIRED",
+      "command": "wattsutra compare",
+      "risk": "Tiny samples described as conclusive",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A09",
+      "title": "Estimator applies no default rates",
+      "status": "verified",
+      "evidence": "unknown: energyKWh, operationalGCO2e, cost",
+      "command": "wattsutra estimate (empty assumptions)",
+      "risk": "Invented watts, carbon intensity or prices",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A10",
+      "title": "Estimator rejects unknown fields and ambiguous energy input",
+      "status": "verified",
+      "evidence": "typo key and dual energy inputs refused",
+      "command": "wattsutra estimate",
+      "risk": "Misspelled assumption silently ignored",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A11",
+      "title": "Modeled and imported values are labelled",
+      "status": "verified",
+      "evidence": "kinds: modeled, imported-meter-observation (attributionUnverified=true)",
+      "command": "wattsutra estimate",
+      "risk": "Measured vs modeled confusion",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A12",
+      "title": "HTML report escapes hostile content",
+      "status": "verified",
+      "evidence": "payload escaped; CSP meta present: true",
+      "command": "wattsutra report --format html",
+      "risk": "Script injection through report fields",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A13",
+      "title": "Hashing is deterministic regardless of key order",
+      "status": "verified",
+      "evidence": "canonical JSON, code-unit key order",
+      "command": "node --test tests/",
+      "risk": "Hash differs across machines or locales",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A14",
+      "title": "Skills and agent manifest are consistent",
+      "status": "verified",
+      "evidence": "20 skills, 20 manifest entries",
+      "command": "wattsutra audit",
+      "risk": "Skill discovery fails silently in IDEs",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "security",
+      "id": "A15",
+      "title": "No credentials in shipped files",
+      "status": "verified",
+      "evidence": "regex scan for GitHub, npm, AWS, OpenAI-style keys and private keys: no matches",
+      "command": "wattsutra audit",
+      "risk": "Leaked secrets in a public package",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A16",
+      "title": "Installer refuses to overwrite customised skills",
+      "status": "verified",
+      "evidence": "second install refused to clobber edited SKILL.md",
+      "command": "wattsutra install",
+      "risk": "User edits destroyed",
+      "action": "None"
+    },
+    {
+      "severity": "info",
+      "owner": "maintainer",
+      "id": "A17",
+      "title": "Hardware energy instrument",
+      "status": "not-run",
+      "evidence": "RAPL unavailable; tools: nvidia-smi=unavailable, powermetrics=unavailable, scaphandre=unavailable; measuredEnergyAvailable=false",
+      "command": "wattsutra doctor",
+      "risk": "Without a meter, energy and carbon stay unmeasured. This is deliberate and correct.",
+      "action": "Import an external meter reading via estimate --assumptions to get an imported-meter-observation"
+    },
+    {
+      "severity": "low",
+      "owner": "user",
+      "id": "A18",
+      "title": "Statistical confidence",
+      "status": "verified",
+      "evidence": "n=5/5; ratio 6.42x; 95% bootstrap interval [3.09, 14.05]; CV baseline 18.9%",
+      "command": "wattsutra compare",
+      "risk": "Small samples on a shared machine; interval is bootstrap, not a significance test",
+      "action": "Repeat on a quiet, pinned machine for publication-grade claims"
+    }
+  ],
+  "sample": {
+    "baseline": {
+      "schema": "wattsutra.run.v1",
+      "product": "WattSutra AI",
+      "toolVersion": "0.2.0",
+      "workloadId": "prime-sum",
+      "manifestHash": "3cc0369461be659d1b8728d549ffe6ac74ef433597eb13457d0339211e297ecf",
+      "workload": {
+        "n": 20000,
+        "variant": "trial",
+        "functionalUnit": "one complete prime-sum job",
+        "checksum": "114079488afea6df6c74454f33b2063639d5737cd34b1e1e7d551dd12ec181ed"
+      },
+      "environment": {
+        "platform": "win32",
+        "arch": "x64",
+        "node": "v24.15.0",
+        "cpuModel": "Intel(R) Core(TM) Ultra 7 155U",
+        "logicalCores": 14,
+        "osRelease": "10.0.26300",
+        "totalMemBytes": 33767481344,
+        "loadAvg1m": null
+      },
+      "methodology": {
+        "version": "offline-probe-v1",
+        "warmups": 1,
+        "qualityCheck": "reference trial prime count and sum",
+        "sampleScope": "single process, sequential",
+        "rssScope": "whole Node.js process (not incremental workload bytes)",
+        "cpuScope": "process cpuUsage for measured interval (not system energy)",
+        "equipment": "no power meter",
+        "clock": "process.hrtime.bigint (monotonic)",
+        "confidence": "timing and process CPU sampled; memory process-wide"
+      },
+      "measurements": {
+        "wallMs": {
+          "kind": "measured",
+          "n": 5,
+          "min": 1.2222,
+          "max": 1.9884,
+          "mean": 1.6285400000000003,
+          "median": 1.6343,
+          "p95": 1.96096,
+          "stddev": 0.3071336158742641,
+          "stddevKind": "sample (n-1)",
+          "cv": 0.18859445630703822,
+          "unit": "ms",
+          "samples": [
+            1.2222,
+            1.6343,
+            1.4466,
+            1.8512,
+            1.9884
+          ]
+        },
+        "cpuMs": {
+          "kind": "measured",
+          "n": 5,
+          "min": 0,
+          "max": 31,
+          "mean": 6.2,
+          "median": 0,
+          "p95": 24.799999999999994,
+          "stddev": 13.863621460498697,
+          "stddevKind": "sample (n-1)",
+          "cv": 2.23606797749979,
+          "unit": "ms",
+          "samples": [
+            0,
+            0,
+            31,
+            0,
+            0
+          ]
+        },
+        "rssBytes": {
+          "kind": "measured",
+          "n": 5,
+          "min": 54366208,
+          "max": 54497280,
+          "mean": 54442393.6,
+          "median": 54456320,
+          "p95": 54489907.2,
+          "stddev": 48602.79840503013,
+          "stddevKind": "sample (n-1)",
+          "cv": 0.0008927380886690134,
+          "unit": "bytes",
+          "samples": [
+            54366208,
+            54431744,
+            54456320,
+            54460416,
+            54497280
+          ]
+        }
+      },
+      "unmeasured": [
+        "GPU energy",
+        "CPU electrical power",
+        "electricity kWh",
+        "CO2e",
+        "cloud billing cost",
+        "end-to-end inference quality"
+      ],
+      "energyKWh": null,
+      "carbonGCO2e": null,
+      "cost": null,
+      "quality": {
+        "kind": "verified",
+        "reference": {
+          "count": 2262,
+          "sum": 21171191
+        },
+        "actual": {
+          "count": 2262,
+          "sum": 21171191
+        }
+      },
+      "recordedAt": "2026-11-10T20:52:25.371Z",
+      "runId": "run-9d99c2a1539c3be0",
+      "integrity": "1c8ad9a86653d4ee56f8bde7a474897f99eebd0a3665df5aa9a2981a35ec211f"
+    },
+    "candidate": {
+      "schema": "wattsutra.run.v1",
+      "product": "WattSutra AI",
+      "toolVersion": "0.2.0",
+      "workloadId": "prime-sum",
+      "manifestHash": "14ddc4990d748669631b6ea465986cabfa292cbf7152e1cb49565c485399fac0",
+      "workload": {
+        "n": 20000,
+        "variant": "sieve",
+        "functionalUnit": "one complete prime-sum job",
+        "checksum": "114079488afea6df6c74454f33b2063639d5737cd34b1e1e7d551dd12ec181ed"
+      },
+      "environment": {
+        "platform": "win32",
+        "arch": "x64",
+        "node": "v24.15.0",
+        "cpuModel": "Intel(R) Core(TM) Ultra 7 155U",
+        "logicalCores": 14,
+        "osRelease": "10.0.26300",
+        "totalMemBytes": 33767481344,
+        "loadAvg1m": null
+      },
+      "methodology": {
+        "version": "offline-probe-v1",
+        "warmups": 1,
+        "qualityCheck": "reference trial prime count and sum",
+        "sampleScope": "single process, sequential",
+        "rssScope": "whole Node.js process (not incremental workload bytes)",
+        "cpuScope": "process cpuUsage for measured interval (not system energy)",
+        "equipment": "no power meter",
+        "clock": "process.hrtime.bigint (monotonic)",
+        "confidence": "timing and process CPU sampled; memory process-wide"
+      },
+      "measurements": {
+        "wallMs": {
+          "kind": "measured",
+          "n": 5,
+          "min": 0.1236,
+          "max": 0.7533,
+          "mean": 0.25362,
+          "median": 0.1306,
+          "p95": 0.6293399999999998,
+          "stddev": 0.2793543216060922,
+          "stddevKind": "sample (n-1)",
+          "cv": 1.101468029359247,
+          "unit": "ms",
+          "samples": [
+            0.7533,
+            0.1335,
+            0.1271,
+            0.1306,
+            0.1236
+          ]
+        },
+        "cpuMs": {
+          "kind": "measured",
+          "n": 5,
+          "min": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "p95": 0,
+          "stddev": 0,
+          "stddevKind": "sample (n-1)",
+          "cv": null,
+          "unit": "ms",
+          "samples": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "rssBytes": {
+          "kind": "measured",
+          "n": 5,
+          "min": 55808000,
+          "max": 55996416,
+          "mean": 55891558.4,
+          "median": 55861248,
+          "p95": 55989043.2,
+          "stddev": 82155.182409876,
+          "stddevKind": "sample (n-1)",
+          "cv": 0.0014699032333633409,
+          "unit": "bytes",
+          "samples": [
+            55808000,
+            55832576,
+            55861248,
+            55959552,
+            55996416
+          ]
+        }
+      },
+      "unmeasured": [
+        "GPU energy",
+        "CPU electrical power",
+        "electricity kWh",
+        "CO2e",
+        "cloud billing cost",
+        "end-to-end inference quality"
+      ],
+      "energyKWh": null,
+      "carbonGCO2e": null,
+      "cost": null,
+      "quality": {
+        "kind": "verified",
+        "reference": {
+          "count": 2262,
+          "sum": 21171191
+        },
+        "actual": {
+          "count": 2262,
+          "sum": 21171191
+        }
+      },
+      "recordedAt": "2026-11-10T20:52:25.385Z",
+      "runId": "run-f7a0053f0293726e",
+      "integrity": "a7cf8404703144c843dede24adf6e51d6f2d8a6033ed3152a15a9c0098f1ef5b"
+    },
+    "comparison": {
+      "schema": "wattsutra.comparison.v1",
+      "toolVersion": "0.2.0",
+      "baseline": {
+        "runId": "run-9d99c2a1539c3be0",
+        "variant": "trial",
+        "hash": "1c8ad9a86653d4ee56f8bde7a474897f99eebd0a3665df5aa9a2981a35ec211f",
+        "meanMs": 1.6285400000000003,
+        "samples": 5
+      },
+      "candidate": {
+        "runId": "run-f7a0053f0293726e",
+        "variant": "sieve",
+        "hash": "a7cf8404703144c843dede24adf6e51d6f2d8a6033ed3152a15a9c0098f1ef5b",
+        "meanMs": 0.25362,
+        "samples": 5
+      },
+      "sameWorkload": true,
+      "qualityEquivalent": true,
+      "environmentParity": {
+        "matched": true,
+        "mismatchedFields": []
+      },
+      "latencyRatio": 6.421181294850565,
+      "latencyChangePercent": -84.42654156483722,
+      "latencyRatioInterval95": {
+        "low": 3.0893657530443073,
+        "high": 14.050158227848101,
+        "resamples": 2000,
+        "seed": 359031,
+        "method": "percentile bootstrap of mean(baseline)/mean(candidate)"
+      },
+      "gates": {
+        "latency": "PASS",
+        "energy": "NOT_RUN",
+        "carbon": "NOT_RUN",
+        "cost": "NOT_RUN"
+      },
+      "gateReasons": [
+        "Candidate faster with equal quality, matched environment and an interval that excludes no change"
+      ],
+      "measurementOnly": true,
+      "energySaving": null,
+      "carbonSaving": null,
+      "costSaving": null,
+      "notes": [
+        "Differences reflect these local benchmark runs, not guaranteed future performance",
+        "No electrical power, carbon, or cost saving is inferred from latency alone",
+        "Energy, carbon and cost gates are NOT_RUN: no meter or user-supplied model was provided to this comparison"
+      ]
+    },
+    "estimate": {
+      "schema": "wattsutra.estimate.v1",
+      "toolVersion": "0.2.0",
+      "sourceHash": "a7cf8404703144c843dede24adf6e51d6f2d8a6033ed3152a15a9c0098f1ef5b",
+      "method": "explicit-inputs-only",
+      "estimated": {
+        "energyKWh": {
+          "value": 4.57925e-9,
+          "kind": "modeled",
+          "formula": "user-supplied averagePowerW × observed wall-hours / 1000",
+          "boundary": "declared power scope; may not equal process energy"
+        },
+        "operationalGCO2e": {
+          "value": 0.000001740115,
+          "kind": "modeled",
+          "formula": "energyKWh × user-provided carbonIntensityGPerKWh"
+        },
+        "cost": {
+          "value": 0.002,
+          "kind": "modeled",
+          "unit": "USD/job",
+          "source": "user-supplied price; not observed billing"
+        }
+      },
+      "observed": {},
+      "unknown": [],
+      "assumptions": {
+        "averagePowerW": 65,
+        "carbonIntensityGPerKWh": 380,
+        "ratePerJob": 0.002,
+        "currency": "USD"
+      },
+      "caveats": [
+        "No default electricity, carbon or pricing rates are applied",
+        "Process elapsed time cannot directly measure electrical energy",
+        "SCI score not claimed without full boundary, functional unit and embodied methodology"
+      ]
+    }
+  }
+}

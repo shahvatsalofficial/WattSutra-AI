@@ -1,0 +1,5 @@
+{
+  "id": "WAT-MEASURE-001",
+  "rule": "Never classify estimated energy as measured",
+  "severity": "critical"
+}

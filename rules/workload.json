@@ -1,0 +1,5 @@
+{
+  "id": "WAT-WORKLOAD-001",
+  "rule": "Compare only same functional unit, workload inputs and quality check",
+  "severity": "high"
+}

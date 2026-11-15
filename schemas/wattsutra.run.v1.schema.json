@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shahvatsalofficial/WattSutra-AI/schemas/wattsutra.run.v1.schema.json",
+  "title": "WattSutra measured run",
+  "type": "object",
+  "required": [
+    "schema",
+    "toolVersion",
+    "runId",
+    "workloadId",
+    "manifestHash",
+    "workload",
+    "environment",
+    "methodology",
+    "measurements",
+    "energyKWh",
+    "carbonGCO2e",
+    "cost",
+    "quality",
+    "recordedAt",
+    "integrity"
+  ],
+  "properties": {
+    "schema": {
+      "const": "wattsutra.run.v1"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^run-[0-9a-f]{16}$"
+    },
+    "workloadId": {
+      "const": "prime-sum"
+    },
+    "integrity": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "energyKWh": {
+      "type": "null"
+    },
+    "carbonGCO2e": {
+      "type": "null"
+    },
+    "cost": {
+      "type": "null"
+    },
+    "measurements": {
+      "type": "object",
+      "required": [
+        "wallMs",
+        "cpuMs",
+        "rssBytes"
+      ],
+      "properties": {
+        "wallMs": {
+          "type": "object",
+          "required": [
+            "kind",
+            "n",
+            "min",
+            "max",
+            "mean",
+            "median",
+            "p95",
+            "stddev",
+            "unit",
+            "samples"
+          ],
+          "properties": {
+            "kind": {
+              "const": "measured"
+            },
+            "n": {
+              "type": "integer",
+              "minimum": 2
+            },
+            "min": {
+              "type": "number",
+              "minimum": 0
+            },
+            "max": {
+              "type": "number",
+              "minimum": 0
+            },
+            "mean": {
+              "type": "number",
+              "minimum": 0
+            },
+            "median": {
+              "type": "number",
+              "minimum": 0
+            },
+            "p95": {
+              "type": "number",
+              "minimum": 0
+            },
+            "stddev": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string"
+            },
+            "samples": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "cpuMs": {
+          "type": "object",
+          "required": [
+            "kind",
+            "n",
+            "min",
+            "max",
+            "mean",
+            "median",
+            "p95",
+            "stddev",
+            "unit",
+            "samples"
+          ],
+          "properties": {
+            "kind": {
+              "const": "measured"
+            },
+            "n": {
+              "type": "integer",
+              "minimum": 2
+            },
+            "min": {
+              "type": "number",
+              "minimum": 0
+            },
+            "max": {
+              "type": "number",
+              "minimum": 0
+            },
+            "mean": {
+              "type": "number",
+              "minimum": 0
+            },
+            "median": {
+              "type": "number",
+              "minimum": 0
+            },
+            "p95": {
+              "type": "number",
+              "minimum": 0
+            },
+            "stddev": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string"
+            },
+            "samples": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "rssBytes": {
+          "type": "object",
+          "required": [
+            "kind",
+            "n",
+            "min",
+            "max",
+            "mean",
+            "median",
+            "p95",
+            "stddev",
+            "unit",
+            "samples"
+          ],
+          "properties": {
+            "kind": {
+              "const": "measured"
+            },
+            "n": {
+              "type": "integer",
+              "minimum": 2
+            },
+            "min": {
+              "type": "number",
+              "minimum": 0
+            },
+            "max": {
+              "type": "number",
+              "minimum": 0
+            },
+            "mean": {
+              "type": "number",
+              "minimum": 0
+            },
+            "median": {
+              "type": "number",
+              "minimum": 0
+            },
+            "p95": {
+              "type": "number",
+              "minimum": 0
+            },
+            "stddev": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string"
+            },
+            "samples": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "workload": {
+      "type": "object",
+      "required": [
+        "n",
+        "variant",
+        "functionalUnit",
+        "checksum"
+      ],
+      "properties": {
+        "variant": {
+          "enum": [
+            "trial",
+            "sieve"
+          ]
+        },
+        "n": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 100000
+        }
+      }
+    }
+  }
+}

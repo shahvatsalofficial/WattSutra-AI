@@ -1,0 +1,9 @@
+{
+  "name": "wattsutra",
+  "version": "0.2.0",
+  "description": "Portable, privacy-first benchmark and inference-cost evidence skills",
+  "author": {
+    "name": "Vatsal Shah"
+  },
+  "homepage": "https://github.com/shahvatsalofficial/WattSutra-AI"
+}

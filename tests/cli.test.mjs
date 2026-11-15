@@ -1,0 +1,17 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {mkdtempSync,mkdirSync,lstatSync,readFileSync,writeFileSync,rmSync,symlinkSync} from 'node:fs';import {tmpdir} from 'node:os';import {join,resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';import {spawnSync} from 'node:child_process';import {install} from '../packages/core/install.mjs';
+const root=resolve(fileURLToPath(new URL('..',import.meta.url)));
+const cli=(...args)=>spawnSync(process.execPath,['packages/cli/index.mjs',...args],{cwd:root,encoding:'utf8',timeout:15000});
+test('doctor works without api key',()=>{const r=cli('doctor');assert.equal(r.status,0);assert.equal(JSON.parse(r.stdout).apiKeyRequired,false)});
+test('help prints documented CLI',()=>assert.match(cli('help').stdout,/estimate/));
+test('agents manifest valid',()=>{const r=cli('agents');assert.equal(r.status,0);assert.ok(JSON.parse(r.stdout).length>=18)});
+test('bench creates measured artifact',()=>{const dir=mkdtempSync(join(tmpdir(),'watt-cli-')),f=join(dir,'run.json');try{const r=cli('bench','--manifest','fixtures/baseline.json','--out',f);assert.equal(r.status,0,r.stderr);assert.ok(JSON.parse(readFileSync(f,'utf8')).measurements.wallMs.mean>0)}finally{rmSync(dir,{recursive:true,force:true})}});
+test('CLI disallows arbitrary executable payload',()=>{const dir=mkdtempSync(join(tmpdir(),'watt-cli-'));const f=join(dir,'bad.json');writeFileSync(f,JSON.stringify({workload:'shell',variant:'bash',samples:2,n:100}));assert.notEqual(cli('bench','--manifest',f).status,0);rmSync(dir,{recursive:true,force:true})});
+test('CLI rejects missing flags',()=>assert.equal(cli('bench').status,2));
+test('CLI invalid report format fails',()=>assert.equal(cli('report','--run','fixtures/baseline.json','--format','pdf').status,2));
+test('install cannot choose unsupported ide',()=>{const tmp=mkdtempSync(join(tmpdir(),'watt-install-'));assert.throws(()=>install(root,tmp,'notepad'));rmSync(tmp,{recursive:true,force:true})});
+test('install requires explicit target',()=>assert.throws(()=>install(root,'','claude')));
+test('install copies skills into Claude project',()=>{const tmp=mkdtempSync(join(tmpdir(),'watt-install-'));try{const r=install(root,tmp,'claude');assert.ok(r.skillFilesInstalledOrVerified>=18);assert.ok(lstatSync(join(tmp,'.claude','skills','wattsutra-prime','SKILL.md')).isFile())}finally{rmSync(tmp,{recursive:true,force:true})}});
+test('install refuses overwrite of customized skill',()=>{const tmp=mkdtempSync(join(tmpdir(),'watt-install-'));try{install(root,tmp,'cursor');writeFileSync(join(tmp,'.cursor','skills','wattsutra-prime','SKILL.md'),'custom');assert.throws(()=>install(root,tmp,'cursor'),/Refusing to overwrite/)}finally{rmSync(tmp,{recursive:true,force:true})}});
+test('install refuses symlink target',(t)=>{const tmp=mkdtempSync(join(tmpdir(),'watt-install-'));const link=tmp+'-link';try{try{symlinkSync(tmp,link,'dir')}catch(e){if(['EPERM','EACCES'].includes(e.code)){t.skip('OS disallows symlinks');return}throw e}assert.throws(()=>install(root,link,'gemini'))}finally{rmSync(tmp,{recursive:true,force:true});rmSync(link,{force:true})}});
+test('install all hosts project-local',()=>{const tmp=mkdtempSync(join(tmpdir(),'watt-install-'));try{const r=install(root,tmp,'all');assert.equal(r.hosts.length,5);assert.ok(r.skillFilesInstalledOrVerified>=90)}finally{rmSync(tmp,{recursive:true,force:true})}});

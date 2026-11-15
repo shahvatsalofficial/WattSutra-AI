@@ -1,0 +1,5 @@
+{
+  "id": "WAT-PRIV-001",
+  "rule": "No cloud credentials or prompt bodies in published traces",
+  "severity": "critical"
+}

@@ -1,0 +1,27 @@
+# WattSutra AI
+
+> Offline, deterministic performance-evidence CLI plus 20 portable agent skills (Claude Code, Cursor, Codex, Gemini CLI, GitHub Copilot). Benchmarks a fixed workload, verifies result quality, compares baseline and candidate with fairness gates and a bootstrap interval, and writes JSON, Markdown and HTML reports. It never presents CPU or wall time as electrical energy, watts, kWh, CO2e or cost; those stay unmeasured unless a real meter reading is imported or the user supplies explicit model inputs. Zero runtime dependencies, Apache-2.0, created by Vatsal Shah.
+
+It is a measurement-honesty tool, not an energy meter. No hardware sensor is read in 0.2. Carbon and cost are modeled only from user-supplied inputs. Hashes detect edits, not forgery.
+
+## Docs
+- [README](README.md): overview, quick start, proof, limits
+- [Documentation index](documents/WattSutra-AI/README.md)
+- [Executive summary](documents/WattSutra-AI/01-executive-summary.md)
+- [Functional specification](documents/WattSutra-AI/02-functional-spec.md): commands, gates, evidence kinds
+- [Technical specification](documents/WattSutra-AI/03-technical-spec.md)
+- [Architecture](documents/WattSutra-AI/04-architecture.md)
+- [User guide](documents/WattSutra-AI/05-user-guide.md)
+- [Security, privacy and legal](documents/WattSutra-AI/06-security-privacy-legal.md)
+- [Independent audit and evidence](documents/WattSutra-AI/07-independent-audit.md)
+- [Observed test results](documents/WattSutra-AI/test-results.md)
+
+## Quick start
+- `npx wattsutra audit --out report`
+- Output: report/audit.json, report/audit.md, report/audit.html
+- Requires Node.js 20 or newer.
+
+## Optional
+- [Measurement policy](docs/MEASUREMENT_POLICY.md)
+- [Threat model](docs/THREAT_MODEL.md)
+- [Changelog](CHANGELOG.md)

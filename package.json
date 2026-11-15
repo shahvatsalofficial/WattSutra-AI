@@ -1,0 +1,84 @@
+{
+  "name": "wattsutra",
+  "version": "0.2.0",
+  "description": "Honest performance and resource evidence CLI plus 20 portable agent skills. Offline, deterministic benchmarks that never present CPU time as energy; MD/HTML/JSON reports and a self-audit.",
+  "type": "module",
+  "bin": {
+    "wattsutra": "packages/cli/index.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "doctor": "node packages/cli/index.mjs doctor",
+    "demo": "node scripts/demo.mjs",
+    "audit": "node packages/cli/index.mjs audit --out artifacts/audit",
+    "gen:skills": "node scripts/gen-skills.mjs",
+    "check:skills": "node scripts/gen-skills.mjs --check",
+    "build:docs": "node scripts/build-docs.mjs",
+    "check:docs": "node scripts/build-docs.mjs --check",
+    "test:report": "node scripts/test-report.mjs",
+    "help": "node packages/cli/index.mjs help"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "Apache-2.0",
+  "author": "Vatsal Shah <https://github.com/shahvatsalofficial>",
+  "keywords": [
+    "benchmark",
+    "performance",
+    "energy",
+    "carbon",
+    "green-software",
+    "sci",
+    "finops",
+    "evidence",
+    "audit",
+    "agent-skills",
+    "claude-code",
+    "cursor",
+    "codex",
+    "ai-agents",
+    "offline",
+    "latency",
+    "cost"
+  ],
+  "main": "packages/core/engine.mjs",
+  "exports": {
+    ".": "./packages/core/engine.mjs",
+    "./cli": "./packages/cli/index.mjs"
+  },
+  "files": [
+    "packages",
+    "skills",
+    "agents",
+    "schemas",
+    "rules",
+    "policies",
+    "workflows",
+    "adapters",
+    "integrations",
+    "fixtures",
+    "examples",
+    ".claude-plugin",
+    "docs",
+    "documents/WattSutra-AI",
+    "llms.txt",
+    "NOTICE",
+    "CHANGELOG.md",
+    "SECURITY.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahvatsalofficial/WattSutra-AI.git"
+  },
+  "homepage": "https://github.com/shahvatsalofficial/WattSutra-AI#readme",
+  "bugs": {
+    "url": "https://github.com/shahvatsalofficial/WattSutra-AI/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

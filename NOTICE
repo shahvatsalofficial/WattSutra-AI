@@ -1,0 +1,12 @@
+WattSutra AI
+Copyright 2026 Vatsal Shah
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+This product contains no third-party runtime code. Third-party tool and
+standard names (OpenTelemetry, k6, CodeCarbon, Scaphandre, Kepler, Green
+Software Foundation SCI, Impact Framework, Prometheus, Grafana, Ollama,
+llama.cpp, NVIDIA NVML, Intel RAPL and others) appear only as references in
+documentation and belong to their respective owners. No affiliation or
+endorsement is claimed. "SCI" is referenced as a methodology; WattSutra makes
+no SCI conformance or certification claim.
