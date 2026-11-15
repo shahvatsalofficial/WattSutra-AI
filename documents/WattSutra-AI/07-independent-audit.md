@@ -53,11 +53,11 @@ Source: [`evidence/samples/audit.json`](evidence/samples/audit.json). Totals: **
 
 | Item | Value |
 | --- | --- |
-| Baseline `trial`, n=20000, 12 samples | mean 0.486 ms |
-| Candidate `sieve`, n=20000, 12 samples | mean 0.096 ms |
-| Ratio (baseline / candidate) | 5.06x |
-| 95% bootstrap interval of ratio | 3.79 to 6.56 |
-| Baseline coefficient of variation | 5.6% |
+| Baseline `trial`, n=20000, 12 samples | mean 0.527 ms |
+| Candidate `sieve`, n=20000, 12 samples | mean 0.076 ms |
+| Ratio of means (baseline / candidate) | 6.96x |
+| 95% bootstrap interval of the median ratio | 6.50 to 7.93 |
+| Baseline coefficient of variation | 7.0% |
 | Latency gate | PASS |
 | Energy, carbon, cost gates | NOT_RUN |
 

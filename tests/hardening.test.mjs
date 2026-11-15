@@ -78,13 +78,13 @@ test('compare: three samples never PASS', () => {
   assert.equal(compare(x, y).gates.latency, 'REVIEW_REQUIRED');
 });
 test('compare: clear speedup with enough samples PASSes and energy gates stay NOT_RUN', () => {
-  const x = benchmark({ ...m, n: 30000, samples: 8 }), y = benchmark({ ...m, n: 30000, variant: 'sieve', samples: 8 });
+  const x = benchmark({ ...m, n: 30000, samples: 12 }), y = benchmark({ ...m, n: 30000, variant: 'sieve', samples: 12 });
   const r = compare(x, y);
   assert.equal(r.gates.latency, 'PASS'); assert.ok(r.latencyRatio > 1);
   assert.deepEqual([r.gates.energy, r.gates.carbon, r.gates.cost], ['NOT_RUN', 'NOT_RUN', 'NOT_RUN']);
 });
 test('compare: slower candidate beyond interval is FAIL', () => {
-  const x = benchmark({ ...m, n: 30000, variant: 'sieve', samples: 8 }), y = benchmark({ ...m, n: 30000, samples: 8 });
+  const x = benchmark({ ...m, n: 30000, variant: 'sieve', samples: 12 }), y = benchmark({ ...m, n: 30000, samples: 12 });
   assert.equal(compare(x, y).gates.latency, 'FAIL');
 });
 test('compare: bootstrap interval is deterministic for the same inputs', () => assert.deepEqual(compare(a, b).latencyRatioInterval95, compare(a, b).latencyRatioInterval95));

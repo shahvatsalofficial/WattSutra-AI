@@ -53,7 +53,7 @@ Layer 2 catches a forger who edits a number and recomputes the hash. It does not
 | p95 | Linear interpolation; indicative only for small n |
 | stddev | Sample (n-1), labelled `stddevKind` |
 | cv | stddev / mean |
-| Bootstrap interval | 2000 resamples of each run's wall samples, ratio of resampled means (baseline/candidate), 2.5th to 97.5th percentile, PRNG mulberry32 seeded `0x57A77` (deterministic) |
+| Bootstrap interval | 2000 resamples of each run's wall samples, ratio of resampled medians (baseline/candidate), robust to outliers such as GC pauses, 2.5th to 97.5th percentile, PRNG mulberry32 seeded `0x57A77` (deterministic) |
 
 The interval is not a hypothesis test. No significance is claimed anywhere.
 

@@ -157,14 +157,14 @@ export function validateExternal(run) { verifyRun(run); return validateRunShape(
 
 // mulberry32: tiny seeded PRNG so bootstrap intervals are reproducible.
 function prng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
-const meanOf = xs => xs.reduce((a, b) => a + b, 0) / xs.length;
+const medianOf = xs => { const v = [...xs].sort((a, b) => a - b), h = v.length >> 1; return v.length % 2 ? v[h] : (v[h - 1] + v[h]) / 2; };
 function bootstrapRatio(base, cand) {
   const rnd = prng(BOOTSTRAP_SEED), ratios = [];
-  const draw = xs => { const out = new Array(xs.length); for (let i = 0; i < xs.length; i++) out[i] = xs[Math.floor(rnd() * xs.length)]; return meanOf(out); };
+  const draw = xs => { const out = new Array(xs.length); for (let i = 0; i < xs.length; i++) out[i] = xs[Math.floor(rnd() * xs.length)]; return medianOf(out); };
   for (let i = 0; i < BOOTSTRAP_RESAMPLES; i++) { const c = draw(cand); if (c > 0) ratios.push(draw(base) / c); }
   ratios.sort((a, b) => a - b);
   const q = p => ratios[Math.min(ratios.length - 1, Math.max(0, Math.floor(p * ratios.length)))];
-  return { low: q(0.025), high: q(0.975), resamples: ratios.length, seed: BOOTSTRAP_SEED, method: 'percentile bootstrap of mean(baseline)/mean(candidate)' };
+  return { low: q(0.025), high: q(0.975), resamples: ratios.length, seed: BOOTSTRAP_SEED, method: 'percentile bootstrap of median(baseline)/median(candidate); medians resist outliers such as GC pauses' };
 }
 
 const ENV_KEYS = ['platform', 'arch', 'node', 'cpuModel', 'logicalCores'];
@@ -194,7 +194,8 @@ export function compare(a, b) {
     candidate: { runId: b.runId, variant: b.workload.variant, hash: b.integrity, meanMs: cm, samples: b.measurements.wallMs.n },
     sameWorkload: true, qualityEquivalent,
     environmentParity: { matched: envMismatch.length === 0, mismatchedFields: envMismatch },
-    latencyRatio: bm / cm, latencyChangePercent: (cm / bm - 1) * 100,
+    latencyRatio: bm / cm,
+    latencyRatioMedian: medianOf(a.measurements.wallMs.samples) / medianOf(b.measurements.wallMs.samples), latencyChangePercent: (cm / bm - 1) * 100,
     latencyRatioInterval95: ci,
     gates: { latency: latencyGate, energy: 'NOT_RUN', carbon: 'NOT_RUN', cost: 'NOT_RUN' },
     gateReasons: reasons,

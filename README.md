@@ -77,7 +77,7 @@ Exit codes: `0` ok, `1` gate `FAIL` or verification failed, `2` usage or validat
 | `PASS` | Same quality, same environment, enough samples, interval excludes "no change" |
 | `NOT_RUN` | Energy, carbon, cost: no meter or model given |
 
-The interval is a seeded percentile bootstrap of mean(baseline)/mean(candidate): reproducible, but not a significance test.
+The interval is a seeded percentile bootstrap of median(baseline)/median(candidate): reproducible, but not a significance test.
 
 ## Proof, not promises
 
