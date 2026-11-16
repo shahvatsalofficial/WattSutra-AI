@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1 — 2026-11-16
+- **Changed** minimum Node.js is now 22 (Node 20 is end-of-life). CI matrix: Ubuntu, Windows Node 22/24, macOS Node 24.
+- **Changed** GitHub Actions bumped to `checkout`, `setup-node`, `upload-artifact` v7; Dependabot added for Actions.
+- **Changed** release workflow now also runs `check:skills` and the self-audit before publishing.
+- **Fixed** comparison bootstrap now uses the median ratio, so a single GC pause or noisy runner cannot flip a clear speedup into `REVIEW_REQUIRED`. Added `latencyRatioMedian`.
+- **Fixed** the audit's live comparison uses at least 12 samples.
+- **Added** a test that keeps the version identical in `package.json`, engine, plugin manifest, `CITATION.cff` and this changelog.
+
 ## 0.2.0 — 2026-11-11
 First public release.
 - **Added** `wattsutra audit`: 18 self-checks, writes `audit.json`, `audit.md`, `audit.html`.

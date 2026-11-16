@@ -2,16 +2,16 @@
   "schema": "wattsutra.test-evidence/v1",
   "command": "node --test tests/*.test.mjs",
   "exitCode": 0,
-  "total": 95,
-  "pass": 93,
+  "total": 96,
+  "pass": 94,
   "fail": 0,
   "skipped": 2,
-  "durationMs": 8544,
+  "durationMs": 28116,
   "environment": {
     "node": "v24.15.0",
     "platform": "win32",
     "arch": "x64",
-    "commit": "be9cb91"
+    "commit": "999795e"
   },
   "skippedReason": "Symlink tests skip when the host forbids symlink creation (Windows without Developer Mode); they run on Linux and macOS CI.",
   "cases": [
@@ -381,6 +381,10 @@
     },
     {
       "name": "shipped example reports verify",
+      "status": "pass"
+    },
+    {
+      "name": "version is identical in package.json, engine, plugin manifest and CITATION.cff",
       "status": "pass"
     },
     {

@@ -4,7 +4,7 @@ WattSutra Core never requires a separate AI API key. All integrations are option
 
 | Tool | Priority | Role | Caveat |
 |---|---|---|---|
-| Node.js 20+ | P0 included | cross-platform CLI | baseline only |
+| Node.js 22+ | P0 included | cross-platform CLI | baseline only |
 | OpenTelemetry | P1 | process/system/container metrics conventions | semantic convention versions evolve |
 | k6 | P1 | HTTP load generation | authorized targets, resource limits |
 | CodeCarbon | P1 | measured or modeled local CPU/GPU/RAM energy | sensor-dependent accuracy and limited accounting boundary |

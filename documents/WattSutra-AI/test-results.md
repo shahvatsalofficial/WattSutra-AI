@@ -4,9 +4,9 @@ Command: `node --test tests/*.test.mjs`
 
 | Total | Pass | Fail | Skipped | Exit code |
 | --- | --- | --- | --- | --- |
-| 95 | 93 | 0 | 2 | 0 |
+| 96 | 94 | 0 | 2 | 0 |
 
-Environment: Node v24.15.0, win32/x64, commit `be9cb91`.
+Environment: Node v24.15.0, win32/x64, commit `999795e`.
 
 Skips: Symlink tests skip when the host forbids symlink creation (Windows without Developer Mode); they run on Linux and macOS CI.
 
@@ -106,6 +106,7 @@ Regenerate with `npm run test:report`. This file is machine-written from the rea
 - PASS — cli doctor reports instruments and no measured energy
 - PASS — cli install --dry-run leaves the target empty
 - PASS — shipped example reports verify
+- PASS — version is identical in package.json, engine, plugin manifest and CITATION.cff
 - PASS — server rejects missing token
 - PASS — server refuses invalid port
 - PASS — server read-only, authenticated, constrained

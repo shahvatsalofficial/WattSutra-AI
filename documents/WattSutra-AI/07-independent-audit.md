@@ -53,15 +53,15 @@ Source: [`evidence/samples/audit.json`](evidence/samples/audit.json). Totals: **
 
 | Item | Value |
 | --- | --- |
-| Baseline `trial`, n=20000, 12 samples | mean 0.527 ms |
-| Candidate `sieve`, n=20000, 12 samples | mean 0.076 ms |
-| Ratio of means (baseline / candidate) | 6.96x |
-| 95% bootstrap interval of the median ratio | 6.50 to 7.93 |
-| Baseline coefficient of variation | 7.0% |
+| Baseline `trial`, n=20000, 12 samples | mean 1.185 ms |
+| Candidate `sieve`, n=20000, 12 samples | mean 0.254 ms |
+| Ratio of means (baseline / candidate) | 4.66x |
+| 95% bootstrap interval of the median ratio | 3.46 to 5.34 |
+| Baseline coefficient of variation | 42.6% |
 | Latency gate | PASS |
 | Energy, carbon, cost gates | NOT_RUN |
 
-Reading this honestly: the interval is still wide because only 12 sub-millisecond samples were taken on a shared laptop. The result supports "sieve is clearly faster than trial division for this n on this machine". It supports **nothing** about energy.
+Reading this honestly: the interval is still wide because only 12 sub-millisecond samples were taken on a shared laptop; the 42.6% coefficient of variation shows how noisy that is (an earlier run of the same command gave 7%). This is exactly why the gate uses an interval and not a single ratio. The result supports "sieve is clearly faster than trial division for this n on this machine". It supports **nothing** about energy.
 
 ### Modeled estimate in the same run
 
@@ -69,7 +69,7 @@ With the fabricated fixture inputs (65 W, 380 gCO2e/kWh, 0.002 USD/job) the tool
 
 ## Test evidence
 
-[Observed test results](test-results.md) are machine-written by running the real suite. The count, pass, fail and skip numbers there are produced by `scripts/test-report.mjs`, not typed by hand. CI runs the suite on Ubuntu (Node 20, 22, 24), Windows (22, 24) and macOS (24); see the Actions tab for the live status.
+[Observed test results](test-results.md) are machine-written by running the real suite. The count, pass, fail and skip numbers there are produced by `scripts/test-report.mjs`, not typed by hand. CI runs the suite on Ubuntu (Node 22, 24), Windows (22, 24) and macOS (24); see the Actions tab for the live status.
 
 ## What this audit cannot show (open limits)
 

@@ -5,7 +5,7 @@ import { readFileSync, writeFileSync, mkdirSync, lstatSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import os from 'node:os';
 
-export const VERSION = '0.2.0';
+export const VERSION = '0.2.1';
 export const SCHEMA = 'wattsutra.run.v1';
 export const COMPARISON_SCHEMA = 'wattsutra.comparison.v1';
 export const ESTIMATE_SCHEMA = 'wattsutra.estimate.v1';

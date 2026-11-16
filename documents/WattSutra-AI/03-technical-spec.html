@@ -35,6 +35,6 @@ quality{kind, reference{count,sum}, actual{count,sum}}, recordedAt, integrity</c
 <h2 id="testing">Testing</h2>
 <p><code>node --test tests/*.test.mjs</code>. Suites: <code>engine</code>, <code>cli</code>, <code>server</code>, <code>hardening</code> (schemas, forgery, gates, probe, installer, audit, CLI exit codes). See <a href="test-results.html">observed results</a>. Symlink tests skip where the OS forbids creating symlinks.</p>
 <h2 id="ci">CI</h2>
-<p><code>.github/workflows/ci.yml</code>: Ubuntu Node 20/22/24, Windows Node 22/24, macOS Node 24. Steps: tests, doctor, demo, audit (artifact upload), docs check, skills check, <code>npm pack --dry-run</code>. <code>release.yml</code> publishes on a <code>v*.*.*</code> tag with npm provenance.</p>
+<p><code>.github/workflows/ci.yml</code>: Ubuntu Node 22/24, Windows Node 22/24, macOS Node 24. Steps: tests, doctor, demo, audit (artifact upload), docs check, skills check, <code>npm pack --dry-run</code>. <code>release.yml</code> publishes on a <code>v*.*.*</code> tag with npm provenance.</p>
 <h2 id="extension-points-planned">Extension points (planned)</h2>
 <p>Instrument adapters (capability negotiation, timeout, cancellation, permission metadata), sandboxed workload runner, billing importers, signing. None exists in 0.2.0; do not document them as working.</p><footer>Apache-2.0 · Created by Vatsal Shah · Generated from <code>03-technical-spec.md</code>. Energy, carbon and cost are never measured without a real meter; documentation makes no savings guarantee.</footer></main></div></body></html>

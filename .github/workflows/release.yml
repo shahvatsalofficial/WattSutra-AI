@@ -10,13 +10,15 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
       - run: npm install -g npm@latest
       - run: npm test
       - run: npm run check:docs
+      - run: npm run check:skills
+      - run: node packages/cli/index.mjs audit --out artifacts/audit
       # Uses npm Trusted Publishing (OIDC); no NPM_TOKEN secret is stored.
       - run: npm publish --access public --provenance

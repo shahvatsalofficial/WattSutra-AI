@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/shahvatsalofficial/WattSutra-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/shahvatsalofficial/WattSutra-AI/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-![Node >=20](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
+![Node >=22](https://img.shields.io/badge/node-%3E%3D22-brightgreen)
 ![Dependencies: 0](https://img.shields.io/badge/runtime%20dependencies-0-success)
 
 WattSutra AI is an **offline, deterministic performance-evidence CLI** with **20 portable AI-agent skills** for Claude Code, Cursor, Codex, Gemini CLI and GitHub Copilot. It benchmarks a workload, proves the answer stayed correct, compares a baseline and a candidate with fairness gates, and writes **JSON, Markdown and HTML** reports in which every number is labelled **measured**, **imported**, **modeled** or **not measured**.

@@ -2,7 +2,7 @@
 
 ## Install
 
-Requires Node.js 20 or newer. No account, no key.
+Requires Node.js 22 or newer. No account, no key.
 
 ```bash
 npx wattsutra --version

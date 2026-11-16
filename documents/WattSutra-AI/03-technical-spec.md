@@ -97,7 +97,7 @@ Energy, carbon and cost gates are always `NOT_RUN` in `compare`.
 
 ## CI
 
-`.github/workflows/ci.yml`: Ubuntu Node 20/22/24, Windows Node 22/24, macOS Node 24. Steps: tests, doctor, demo, audit (artifact upload), docs check, skills check, `npm pack --dry-run`. `release.yml` publishes on a `v*.*.*` tag with npm provenance.
+`.github/workflows/ci.yml`: Ubuntu Node 22/24, Windows Node 22/24, macOS Node 24. Steps: tests, doctor, demo, audit (artifact upload), docs check, skills check, `npm pack --dry-run`. `release.yml` publishes on a `v*.*.*` tag with npm provenance.
 
 ## Extension points (planned)
 

@@ -1,6 +1,6 @@
 {
   "name": "wattsutra",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Portable, privacy-first benchmark and inference-cost evidence skills",
   "author": {
     "name": "Vatsal Shah"

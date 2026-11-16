@@ -19,7 +19,7 @@ It is a measurement-honesty tool, not an energy meter. No hardware sensor is rea
 ## Quick start
 - `npx wattsutra audit --out report`
 - Output: report/audit.json, report/audit.md, report/audit.html
-- Requires Node.js 20 or newer.
+- Requires Node.js 22 or newer.
 
 ## Optional
 - [Measurement policy](docs/MEASUREMENT_POLICY.md)

@@ -1,17 +1,17 @@
 {
   "schema": "wattsutra.estimate.v1",
-  "toolVersion": "0.2.0",
-  "sourceHash": "9dfa0c0de7eff99e93f2f213ef49a7a18f0aae31aee4dbef15f40986de0304d8",
+  "toolVersion": "0.2.1",
+  "sourceHash": "a116044a5f22232f8b3e4f88d97010eb486707b054974eb43e5cdee92042b1a5",
   "method": "explicit-inputs-only",
   "estimated": {
     "energyKWh": {
-      "value": 4.203333333333333e-9,
+      "value": 4.329000000000001e-9,
       "kind": "modeled",
       "formula": "user-supplied averagePowerW × observed wall-hours / 1000",
       "boundary": "declared power scope; may not equal process energy"
     },
     "operationalGCO2e": {
-      "value": 0.0000015972666666666665,
+      "value": 0.0000016450200000000005,
       "kind": "modeled",
       "formula": "energyKWh × user-provided carbonIntensityGPerKWh"
     },

@@ -1,18 +1,18 @@
 {
   "schema": "wattsutra.comparison.v1",
-  "toolVersion": "0.2.0",
+  "toolVersion": "0.2.1",
   "baseline": {
-    "runId": "run-84b4bb4a2315a1fc",
+    "runId": "run-65f617eb4163a9c8",
     "variant": "trial",
-    "hash": "5ec9eef3bfce4625e6e2336887a0058d556b1e9c862eb936cf3e53e302a455ea",
-    "meanMs": 0.5447,
+    "hash": "9e818d8369043008b000e6cc993a97e56cca08082c92c02fd63d7a0a10d1a896",
+    "meanMs": 1.09772,
     "samples": 5
   },
   "candidate": {
-    "runId": "run-9e2e5db89ad56805",
+    "runId": "run-65b023e0d3066e3d",
     "variant": "sieve",
-    "hash": "9dfa0c0de7eff99e93f2f213ef49a7a18f0aae31aee4dbef15f40986de0304d8",
-    "meanMs": 0.23279999999999998,
+    "hash": "a116044a5f22232f8b3e4f88d97010eb486707b054974eb43e5cdee92042b1a5",
+    "meanMs": 0.23976000000000003,
     "samples": 5
   },
   "sameWorkload": true,
@@ -21,24 +21,24 @@
     "matched": true,
     "mismatchedFields": []
   },
-  "latencyRatio": 2.3397766323024056,
-  "latencyRatioMedian": 6.869853917662682,
-  "latencyChangePercent": -57.260877547273736,
+  "latencyRatio": 4.578411745078411,
+  "latencyRatioMedian": 5.330777096114519,
+  "latencyChangePercent": -78.15836461028313,
   "latencyRatioInterval95": {
-    "low": 0.8695579088922508,
-    "high": 8.575033200531209,
+    "low": 2.2423655913978493,
+    "high": 8.4847409510291,
     "resamples": 2000,
     "seed": 359031,
     "method": "percentile bootstrap of median(baseline)/median(candidate); medians resist outliers such as GC pauses"
   },
   "gates": {
-    "latency": "REVIEW_REQUIRED",
+    "latency": "PASS",
     "energy": "NOT_RUN",
     "carbon": "NOT_RUN",
     "cost": "NOT_RUN"
   },
   "gateReasons": [
-    "95% bootstrap interval includes no change: difference not distinguishable from noise"
+    "Candidate faster with equal quality, matched environment and an interval that excludes no change"
   ],
   "measurementOnly": true,
   "energySaving": null,

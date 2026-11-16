@@ -1,6 +1,6 @@
 # WattSutra AI — Independent self-audit
 
-Verdict: **PASS** · WattSutra 0.2.0 · Node v24.15.0 · win32/x64 · 2026-11-15T18:56:56.903Z
+Verdict: **PASS** · WattSutra 0.2.1 · Node v24.15.0 · win32/x64 · 2026-11-16T17:56:27.058Z
 
 Scope: Evidence integrity, claim hygiene, comparison fairness and packaging. Energy, carbon and cost gates are NOT_RUN: no hardware meter was used.
 
@@ -10,7 +10,7 @@ Scope: Evidence integrity, claim hygiene, comparison fairness and packaging. Ene
 
 ## Live sample (generated during this audit)
 
-Baseline `trial` mean 0.527 ms vs candidate `sieve` mean 0.076 ms. Ratio 6.96x, 95% bootstrap interval [6.50, 7.93]. Latency gate **PASS**; energy, carbon, cost gates NOT_RUN.
+Baseline `trial` mean 1.185 ms vs candidate `sieve` mean 0.254 ms. Ratio 4.66x, 95% bootstrap interval [3.46, 5.34]. Latency gate **PASS**; energy, carbon, cost gates NOT_RUN.
 
 These timings come from the machine that ran the audit. They are not a benchmark of your hardware and not an energy claim.
 
@@ -18,7 +18,7 @@ These timings come from the machine that ran the audit. They are not a benchmark
 
 | ID | Check | Status | Severity | Evidence |
 | --- | --- | --- | --- | --- |
-| A01 | Benchmark runs verify and keep quality parity | verified | info | baseline c096034d731bdae65dc75480c1e4f4dd417df2f59d5812e8ce7fd344ea5f83da candidate b9c580c612990ad1a14b7ba8adefa598328e608c28e71018b6a6a88a079e8de7; prime count 2262, sum 21171191 |
+| A01 | Benchmark runs verify and keep quality parity | verified | info | baseline 9a1da4495e209034f9ee4c77481ef39150d65938e70d0bf8a36d6114c0d904b9 candidate 07d0c0ac64c6fa76987341a166ef263b1fbb18c3f6bf4aeb61cfd76a1819f2e3; prime count 2262, sum 21171191 |
 | A02 | Edited reports are rejected (integrity hash) | verified | info | mutated wallMs.mean; verifyRun threw integrity mismatch |
 | A03 | Internally inconsistent reports are rejected even with a recomputed hash | verified | info | mean edited, hash recomputed; validateRunShape recomputed stats from samples and refused |
 | A04 | Measured runs contain no energy, carbon or cost values | verified | info | energyKWh/carbonGCO2e/cost are null; injected energyKWh=0.5 was refused |
@@ -35,7 +35,7 @@ These timings come from the machine that ran the audit. They are not a benchmark
 | A15 | No credentials in shipped files | verified | info | regex scan for GitHub, npm, AWS, OpenAI-style keys and private keys: no matches |
 | A16 | Installer refuses to overwrite customised skills | verified | info | second install refused to clobber edited SKILL.md |
 | A17 | Hardware energy instrument | not-run | info | RAPL unavailable; tools: nvidia-smi=unavailable, powermetrics=unavailable, scaphandre=unavailable; measuredEnergyAvailable=false |
-| A18 | Statistical confidence | verified | low | latency gate PASS; n=12/12; ratio 6.96x; 95% bootstrap interval [6.50, 7.93]; CV baseline 7.0% |
+| A18 | Statistical confidence | verified | low | latency gate PASS; n=12/12; ratio 4.66x; 95% bootstrap interval [3.46, 5.34]; CV baseline 42.6% |
 
 ## Detail
 

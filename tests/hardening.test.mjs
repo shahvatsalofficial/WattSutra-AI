@@ -189,3 +189,12 @@ test('cli install --dry-run leaves the target empty', () => {
 test('shipped example reports verify', () => {
   for (const f of ['baseline', 'candidate']) { const p = join(root, 'examples/reports', f + '.json'); if (existsSync(p)) assert.equal(verifyRun(safeReadJson(p)), true); }
 });
+
+test('version is identical in package.json, engine, plugin manifest and CITATION.cff', async () => {
+  const { VERSION } = await import('../packages/core/engine.mjs');
+  const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version;
+  assert.equal(VERSION, pkg);
+  assert.equal(JSON.parse(readFileSync(join(root, '.claude-plugin/plugin.json'), 'utf8')).version, pkg);
+  assert.match(readFileSync(join(root, 'CITATION.cff'), 'utf8'), new RegExp(`^version: ${pkg.replaceAll('.', '\.')}$`, 'm'));
+  assert.match(readFileSync(join(root, 'CHANGELOG.md'), 'utf8'), new RegExp(`^## ${pkg.replaceAll('.', '\.')} `, 'm'));
+});

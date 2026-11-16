@@ -1,6 +1,6 @@
 {
   "name": "wattsutra",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Honest performance and resource evidence CLI plus 20 portable agent skills. Offline, deterministic benchmarks that never present CPU time as energy; MD/HTML/JSON reports and a self-audit.",
   "type": "module",
   "bin": {
@@ -19,7 +19,7 @@
     "help": "node packages/cli/index.mjs help"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "license": "Apache-2.0",
   "author": "Vatsal Shah <https://github.com/shahvatsalofficial>",

@@ -1,7 +1,7 @@
 {
   "schema": "wattsutra.run.v1",
   "product": "WattSutra AI",
-  "toolVersion": "0.2.0",
+  "toolVersion": "0.2.1",
   "workloadId": "prime-sum",
   "manifestHash": "3cc0369461be659d1b8728d549ffe6ac74ef433597eb13457d0339211e297ecf",
   "workload": {
@@ -35,21 +35,21 @@
     "wallMs": {
       "kind": "measured",
       "n": 5,
-      "min": 0.4849,
-      "max": 0.6457,
-      "mean": 0.5447,
-      "median": 0.5173,
-      "p95": 0.6337,
-      "stddev": 0.06930339097042801,
+      "min": 0.9762,
+      "max": 1.2801,
+      "mean": 1.09772,
+      "median": 1.0427,
+      "p95": 1.26318,
+      "stddev": 0.13356160376395607,
       "stddevKind": "sample (n-1)",
-      "cv": 0.12723222135198828,
+      "cv": 0.12167183231056741,
       "unit": "ms",
       "samples": [
-        0.6457,
-        0.4899,
-        0.5857,
-        0.5173,
-        0.4849
+        1.2801,
+        1.1955,
+        0.9762,
+        0.9941,
+        1.0427
       ]
     },
     "cpuMs": {
@@ -75,21 +75,21 @@
     "rssBytes": {
       "kind": "measured",
       "n": 5,
-      "min": 60276736,
-      "max": 60424192,
-      "mean": 60378316.8,
-      "median": 60403712,
-      "p95": 60421734.4,
-      "stddev": 59596.448108926765,
+      "min": 65224704,
+      "max": 65224704,
+      "mean": 65224704,
+      "median": 65224704,
+      "p95": 65224704,
+      "stddev": 0,
       "stddevKind": "sample (n-1)",
-      "cv": 0.000987050505338479,
+      "cv": 0,
       "unit": "bytes",
       "samples": [
-        60276736,
-        60375040,
-        60403712,
-        60411904,
-        60424192
+        65224704,
+        65224704,
+        65224704,
+        65224704,
+        65224704
       ]
     }
   },
@@ -115,7 +115,7 @@
       "sum": 21171191
     }
   },
-  "recordedAt": "2026-11-15T18:56:53.426Z",
-  "runId": "run-84b4bb4a2315a1fc",
-  "integrity": "5ec9eef3bfce4625e6e2336887a0058d556b1e9c862eb936cf3e53e302a455ea"
+  "recordedAt": "2026-11-16T17:56:19.419Z",
+  "runId": "run-65f617eb4163a9c8",
+  "integrity": "9e818d8369043008b000e6cc993a97e56cca08082c92c02fd63d7a0a10d1a896"
 }
