@@ -5,6 +5,7 @@
 It is a measurement-honesty tool, not an energy meter. No hardware sensor is read in 0.2. Carbon and cost are modeled only from user-supplied inputs. Hashes detect edits, not forgery.
 
 ## Docs
+- [Live documentation site](https://shahvatsalofficial.github.io/WattSutra-AI/)
 - [README](README.md): overview, quick start, proof, limits
 - [Documentation index](documents/WattSutra-AI/README.md)
 - [Executive summary](documents/WattSutra-AI/01-executive-summary.md)

@@ -106,7 +106,7 @@ npx wattsutra install --target . --ide claude
 
 ## Documentation
 
-Markdown and responsive HTML in [`documents/WattSutra-AI/`](documents/WattSutra-AI/README.md): executive summary, functional spec, technical spec, architecture, user guide, security and legal, independent audit, observed test results.
+Live site: <https://shahvatsalofficial.github.io/WattSutra-AI/>. Markdown and responsive HTML in [`documents/WattSutra-AI/`](documents/WattSutra-AI/README.md): executive summary, functional spec, technical spec, architecture, user guide, security and legal, independent audit, observed test results.
 
 ## Security and legal
 
