@@ -1,0 +1,38 @@
+{
+  "schema": "wattsutra.estimate.v1",
+  "toolVersion": "0.2.1",
+  "sourceHash": "a116044a5f22232f8b3e4f88d97010eb486707b054974eb43e5cdee92042b1a5",
+  "method": "explicit-inputs-only",
+  "estimated": {
+    "energyKWh": {
+      "value": 4.329000000000001e-9,
+      "kind": "modeled",
+      "formula": "user-supplied averagePowerW × observed wall-hours / 1000",
+      "boundary": "declared power scope; may not equal process energy"
+    },
+    "operationalGCO2e": {
+      "value": 0.0000016450200000000005,
+      "kind": "modeled",
+      "formula": "energyKWh × user-provided carbonIntensityGPerKWh"
+    },
+    "cost": {
+      "value": 0.002,
+      "kind": "modeled",
+      "unit": "USD/job",
+      "source": "user-supplied price; not observed billing"
+    }
+  },
+  "observed": {},
+  "unknown": [],
+  "assumptions": {
+    "averagePowerW": 65,
+    "carbonIntensityGPerKWh": 380,
+    "ratePerJob": 0.002,
+    "currency": "USD"
+  },
+  "caveats": [
+    "No default electricity, carbon or pricing rates are applied",
+    "Process elapsed time cannot directly measure electrical energy",
+    "SCI score not claimed without full boundary, functional unit and embodied methodology"
+  ]
+}

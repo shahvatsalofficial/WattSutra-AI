@@ -15,6 +15,8 @@ It is a measurement-honesty tool, not an energy meter. No hardware sensor is rea
 - [User guide](documents/WattSutra-AI/05-user-guide.md)
 - [Security, privacy and legal](documents/WattSutra-AI/06-security-privacy-legal.md)
 - [Independent audit and evidence](documents/WattSutra-AI/07-independent-audit.md)
+- [Real-world scenarios](documents/WattSutra-AI/08-real-world-scenarios.md)
+- [FAQ and glossary](documents/WattSutra-AI/09-faq-glossary.md)
 - [Observed test results](documents/WattSutra-AI/test-results.md)
 
 ## Quick start

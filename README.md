@@ -34,7 +34,7 @@ Verdict: PASS (17/18 verified, 0 failed, 1 not-run)
 
 The one `not-run` check is the hardware energy instrument. That is correct: no meter is read in 0.2.
 
-Real generated reports: [audit HTML](documents/WattSutra-AI/evidence/samples/audit.html) · [audit Markdown](documents/WattSutra-AI/evidence/samples/audit.md) · [measured run HTML](documents/WattSutra-AI/evidence/samples/measurement.html).
+Real generated reports: [audit HTML](https://shahvatsalofficial.github.io/WattSutra-AI/evidence/samples/audit.html) · [audit Markdown](documents/WattSutra-AI/evidence/samples/audit.md) · [measured run HTML](https://shahvatsalofficial.github.io/WattSutra-AI/evidence/samples/measurement.html).
 
 ## Why it exists
 
@@ -106,7 +106,7 @@ npx wattsutra install --target . --ide claude
 
 ## Documentation
 
-Live site: <https://shahvatsalofficial.github.io/WattSutra-AI/>. Markdown and responsive HTML in [`documents/WattSutra-AI/`](documents/WattSutra-AI/README.md): executive summary, functional spec, technical spec, architecture, user guide, security and legal, independent audit, observed test results.
+**Website:** <https://shahvatsalofficial.github.io/WattSutra-AI/> (light and dark theme, phone and desktop), with [real-world scenarios](https://shahvatsalofficial.github.io/WattSutra-AI/08-real-world-scenarios.html), diagrams and charts built from committed evidence. Markdown sources: [`documents/WattSutra-AI/`](documents/WattSutra-AI/README.md). Built into `documents/html/` by `npm run build:docs`.
 
 ## Security and legal
 

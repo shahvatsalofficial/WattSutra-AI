@@ -2,7 +2,7 @@ name: Pages
 on:
   push:
     branches: [main]
-    paths: ['documents/WattSutra-AI/**', '.github/workflows/pages.yml']
+    paths: ['documents/**', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -19,14 +19,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
-      - run: |
-          mkdir _site
-          cp -r documents/WattSutra-AI/. _site/
-          cp _site/README.html _site/index.html
-          touch _site/.nojekyll
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: _site
+          path: documents/html
       - id: deployment
         uses: actions/deploy-pages@v5

@@ -7,7 +7,7 @@ This is engineering documentation, not legal advice. Have counsel review before 
 ### Assets
 Benchmark results, environment inventory (CPU model, OS release, memory), assumption files (prices, power figures), skill files in user projects.
 
-### Threats and controls (version 0.2.0)
+### Threats and controls (version 0.2)
 
 | Threat | Control | Test |
 | --- | --- | --- |
@@ -55,7 +55,7 @@ Provided "as is", without warranty. No guarantee that a number reflects any othe
 
 ### Claims the project does not make
 - Not a certified or conformant implementation of the Green Software Foundation SCI specification, ISO standards or any regulatory scheme (CSRD, GHG Protocol, SEC).
-- Not an energy meter. No kWh or CO2e is ever measured by 0.2.0.
+- Not an energy meter. No kWh or CO2e is ever measured by 0.2.
 - Not a cloud billing authority. Costs are modeled from user prices.
 - Not independently audited by a third party.
 

@@ -2,7 +2,7 @@
 
 ## Feature map
 
-| ID | Feature | Status in 0.2.0 |
+| ID | Feature | Status in 0.2 |
 | --- | --- | --- |
 | AI-012-F01 | Benchmark recorder: elapsed time, process CPU, process RSS, sample count, scope, environment | Implemented |
 | AI-012-F02 | Baseline comparator: matching workload and unit enforced, measured difference | Implemented with gates and bootstrap interval |
@@ -21,6 +21,13 @@
 | `modeled-sci-like` | `estimated.sciLikeGPerUnit` | Needs energy, intensity, embodied and work units; **not** a conformance claim |
 | `not-run` / unknown | `gates.*`, `unknown[]` | Stays empty |
 
+<!-- fig:kinds -->
+
+```mermaid
+flowchart LR
+  M[measured] --- I[imported] --- O[modeled] --- N[not measured]
+```
+
 ## Commands
 
 ### `bench`
@@ -38,6 +45,21 @@ Refuses runs with different workload, `n`, functional unit or scope (exit 2). Ot
 | `REVIEW_REQUIRED` | Platform, arch, Node, CPU model or core count differ; fewer than 5 samples in either run; interval includes 1 |
 | `PASS` | Quality equal, environment equal, 5+ samples each, interval fully above 1 |
 | `NOT_RUN` | Always for energy, carbon, cost in `compare` |
+
+<!-- fig:gate -->
+
+```mermaid
+flowchart TD
+  Q{Same answer?} -->|no| F[FAIL]
+  Q -->|yes| E{Same environment?}
+  E -->|no| R[REVIEW_REQUIRED]
+  E -->|yes| N{5 or more samples?}
+  N -->|no| R
+  N -->|yes| I{Interval excludes 1x?}
+  I -->|no| R
+  I -->|slower| F
+  I -->|faster| P[PASS]
+```
 
 Exit 1 when the latency gate is `FAIL`.
 

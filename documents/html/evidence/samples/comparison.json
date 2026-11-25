@@ -1,0 +1,52 @@
+{
+  "schema": "wattsutra.comparison.v1",
+  "toolVersion": "0.2.1",
+  "baseline": {
+    "runId": "run-65f617eb4163a9c8",
+    "variant": "trial",
+    "hash": "9e818d8369043008b000e6cc993a97e56cca08082c92c02fd63d7a0a10d1a896",
+    "meanMs": 1.09772,
+    "samples": 5
+  },
+  "candidate": {
+    "runId": "run-65b023e0d3066e3d",
+    "variant": "sieve",
+    "hash": "a116044a5f22232f8b3e4f88d97010eb486707b054974eb43e5cdee92042b1a5",
+    "meanMs": 0.23976000000000003,
+    "samples": 5
+  },
+  "sameWorkload": true,
+  "qualityEquivalent": true,
+  "environmentParity": {
+    "matched": true,
+    "mismatchedFields": []
+  },
+  "latencyRatio": 4.578411745078411,
+  "latencyRatioMedian": 5.330777096114519,
+  "latencyChangePercent": -78.15836461028313,
+  "latencyRatioInterval95": {
+    "low": 2.2423655913978493,
+    "high": 8.4847409510291,
+    "resamples": 2000,
+    "seed": 359031,
+    "method": "percentile bootstrap of median(baseline)/median(candidate); medians resist outliers such as GC pauses"
+  },
+  "gates": {
+    "latency": "PASS",
+    "energy": "NOT_RUN",
+    "carbon": "NOT_RUN",
+    "cost": "NOT_RUN"
+  },
+  "gateReasons": [
+    "Candidate faster with equal quality, matched environment and an interval that excludes no change"
+  ],
+  "measurementOnly": true,
+  "energySaving": null,
+  "carbonSaving": null,
+  "costSaving": null,
+  "notes": [
+    "Differences reflect these local benchmark runs, not guaranteed future performance",
+    "No electrical power, carbon, or cost saving is inferred from latency alone",
+    "Energy, carbon and cost gates are NOT_RUN: no meter or user-supplied model was provided to this comparison"
+  ]
+}

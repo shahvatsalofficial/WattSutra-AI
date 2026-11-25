@@ -6,6 +6,7 @@
 - **Changed** release workflow now also runs `check:skills` and the self-audit before publishing.
 - **Fixed** comparison bootstrap now uses the median ratio, so a single GC pause or noisy runner cannot flip a clear speedup into `REVIEW_REQUIRED`. Added `latencyRatioMedian`.
 - **Fixed** the audit's live comparison uses at least 12 samples.
+- **Changed** documentation website rebuilt: light theme by default with dark toggle, phone and desktop layouts, flow diagrams and charts, seven real-world scenarios with captured CLI output, FAQ and glossary. Site now lives in `documents/html/`.
 - **Added** a test that keeps the version identical in `package.json`, engine, plugin manifest, `CITATION.cff` and this changelog.
 
 ## 0.2.0 — 2026-11-11

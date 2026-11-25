@@ -12,21 +12,20 @@
 
 ## System context
 
-```text
-User / CI / IDE agent
-        |
-        v
-  wattsutra CLI  ---->  core engine  ---->  reports (JSON / MD / HTML / CSV)
-        |                  |  ^
-        |                  |  +-- fixtures, manifests (user files, read-only)
-        |                  v
-        |             audit module  ---->  audit.json / audit.md / audit.html
-        |
-        +--> install  ---->  .claude/ .cursor/ .agents/ .gemini/ .github/ skills (project-local copies)
-        +--> server   ---->  127.0.0.1, bearer token, read-only JSON
+<!-- fig:context -->
+
+```mermaid
+flowchart LR
+  U[You / CI / IDE agent] --> C[wattsutra CLI] --> E[core engine] --> R[reports]
+  C --> I[install: project-local skills]
+  C --> S[server: 127.0.0.1 read-only]
 ```
 
+`install` copies skills into project-local folders. `server` serves JSON reports read-only on `127.0.0.1` with a bearer token.
+
 Dependencies point inward. The core never imports the CLI, server or any vendor SDK.
+
+<!-- fig:layers -->
 
 ## Components
 
@@ -52,13 +51,18 @@ Twenty roles are **instructions**, not processes. The Chief Orchestrator (`watts
 
 ## Data flow for a fair comparison
 
-```text
-manifest.json --bench--> run A (samples, hash)   manifest.json --bench--> run B
-        run A, run B --verify--> shape + hash OK
-        --compare--> quality equal? env equal? n>=5? interval excludes 1?
-        --> gates {latency, energy NOT_RUN, carbon NOT_RUN, cost NOT_RUN}
-        assumptions.json --estimate--> modeled energy/carbon/cost (labelled)
-        --report/audit--> JSON + Markdown + HTML
+<!-- fig:dataflow -->
+
+```mermaid
+flowchart LR
+  M[manifest] --> A[run A] & B[run B] --> V[verify] --> C[compare: gates] --> X[estimate: your inputs] --> R[report / audit]
+```
+
+<!-- fig:pipeline -->
+
+```mermaid
+flowchart LR
+  A[Manifest] --> B[bench] --> C[verify] --> D[compare] --> E[report / audit]
 ```
 
 ## Trust boundaries
@@ -71,6 +75,13 @@ manifest.json --bench--> run A (samples, hash)   manifest.json --bench--> run B
 | Network into server | loopback bind, bearer token, GET only, fixed path pattern |
 | Skills into IDE project | project-local only, no overwrite of edits, no symlinks |
 | Report into browser | HTML escaping and CSP meta |
+
+<!-- fig:trust -->
+
+```mermaid
+flowchart LR
+  U[Untrusted files] --> V[Size, type and shape checks] --> C[Core] --> R[Escaped reports]
+```
 
 ## Key decisions (ADR summary)
 

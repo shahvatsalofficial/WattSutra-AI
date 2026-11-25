@@ -1,0 +1,403 @@
+{
+  "schema": "wattsutra.test-evidence/v1",
+  "command": "node --test tests/*.test.mjs",
+  "exitCode": 0,
+  "total": 96,
+  "pass": 94,
+  "fail": 0,
+  "skipped": 2,
+  "durationMs": 17703,
+  "environment": {
+    "node": "v24.15.0",
+    "platform": "win32",
+    "arch": "x64",
+    "commit": "f4e55e2"
+  },
+  "skippedReason": "Symlink tests skip when the host forbids symlink creation (Windows without Developer Mode); they run on Linux and macOS CI.",
+  "cases": [
+    {
+      "name": "doctor works without api key",
+      "status": "pass"
+    },
+    {
+      "name": "help prints documented CLI",
+      "status": "pass"
+    },
+    {
+      "name": "agents manifest valid",
+      "status": "pass"
+    },
+    {
+      "name": "bench creates measured artifact",
+      "status": "pass"
+    },
+    {
+      "name": "CLI disallows arbitrary executable payload",
+      "status": "pass"
+    },
+    {
+      "name": "CLI rejects missing flags",
+      "status": "pass"
+    },
+    {
+      "name": "CLI invalid report format fails",
+      "status": "pass"
+    },
+    {
+      "name": "install cannot choose unsupported ide",
+      "status": "pass"
+    },
+    {
+      "name": "install requires explicit target",
+      "status": "pass"
+    },
+    {
+      "name": "install copies skills into Claude project",
+      "status": "pass"
+    },
+    {
+      "name": "install refuses overwrite of customized skill",
+      "status": "pass"
+    },
+    {
+      "name": "install refuses symlink target",
+      "status": "skipped"
+    },
+    {
+      "name": "install all hosts project-local",
+      "status": "pass"
+    },
+    {
+      "name": "prime variants agree 2",
+      "status": "pass"
+    },
+    {
+      "name": "prime variants agree 3",
+      "status": "pass"
+    },
+    {
+      "name": "prime variants agree 10",
+      "status": "pass"
+    },
+    {
+      "name": "prime variants agree 97",
+      "status": "pass"
+    },
+    {
+      "name": "prime variants agree 250",
+      "status": "pass"
+    },
+    {
+      "name": "prime variants agree 1000",
+      "status": "pass"
+    },
+    {
+      "name": "reject unknown workload",
+      "status": "pass"
+    },
+    {
+      "name": "reject unknown variant",
+      "status": "pass"
+    },
+    {
+      "name": "reject too few samples",
+      "status": "pass"
+    },
+    {
+      "name": "reject excess samples",
+      "status": "pass"
+    },
+    {
+      "name": "reject infinite n",
+      "status": "pass"
+    },
+    {
+      "name": "reject fractional n",
+      "status": "pass"
+    },
+    {
+      "name": "reject huge n",
+      "status": "pass"
+    },
+    {
+      "name": "reject negative warmups",
+      "status": "pass"
+    },
+    {
+      "name": "sample counts",
+      "status": "pass"
+    },
+    {
+      "name": "measured timing only",
+      "status": "pass"
+    },
+    {
+      "name": "cpu units and samples",
+      "status": "pass"
+    },
+    {
+      "name": "memory labeled whole process",
+      "status": "pass"
+    },
+    {
+      "name": "referenced quality verified",
+      "status": "pass"
+    },
+    {
+      "name": "report integrity verified",
+      "status": "pass"
+    },
+    {
+      "name": "tampering detected",
+      "status": "pass"
+    },
+    {
+      "name": "nested hashing is order stable",
+      "status": "pass"
+    },
+    {
+      "name": "summary median and p95",
+      "status": "pass"
+    },
+    {
+      "name": "summary excludes infinity",
+      "status": "pass"
+    },
+    {
+      "name": "summary excludes empty",
+      "status": "pass"
+    },
+    {
+      "name": "comparison same workload",
+      "status": "pass"
+    },
+    {
+      "name": "mismatched workload refused",
+      "status": "pass"
+    },
+    {
+      "name": "tampered candidate refused",
+      "status": "pass"
+    },
+    {
+      "name": "estimator missing everything stays unknown",
+      "status": "pass"
+    },
+    {
+      "name": "model power and carbon with explicit rates",
+      "status": "pass"
+    },
+    {
+      "name": "imported meter observation needs provenance",
+      "status": "pass"
+    },
+    {
+      "name": "imported metered observation labeled",
+      "status": "pass"
+    },
+    {
+      "name": "negative watt assumptions rejected",
+      "status": "pass"
+    },
+    {
+      "name": "invalid carbon rate rejected",
+      "status": "pass"
+    },
+    {
+      "name": "currency required with cost",
+      "status": "pass"
+    },
+    {
+      "name": "cost remains modeled",
+      "status": "pass"
+    },
+    {
+      "name": "SCI-like not automatic",
+      "status": "pass"
+    },
+    {
+      "name": "SCI-like explicitly includes embodied and unit",
+      "status": "pass"
+    },
+    {
+      "name": "html escaping includes markdown text",
+      "status": "pass"
+    },
+    {
+      "name": "markdown labels energy not measured",
+      "status": "pass"
+    },
+    {
+      "name": "safe JSON read of normal file",
+      "status": "pass"
+    },
+    {
+      "name": "safe JSON read rejects symlink",
+      "status": "skipped"
+    },
+    {
+      "name": "csv export does not invent kWh",
+      "status": "pass"
+    },
+    {
+      "name": "run validates against shipped JSON Schema",
+      "status": "pass"
+    },
+    {
+      "name": "comparison validates against shipped JSON Schema",
+      "status": "pass"
+    },
+    {
+      "name": "estimate validates against shipped JSON Schema",
+      "status": "pass"
+    },
+    {
+      "name": "schema rejects a run carrying energy",
+      "status": "pass"
+    },
+    {
+      "name": "run has stable id, raw samples and manifest hash",
+      "status": "pass"
+    },
+    {
+      "name": "stddev is the sample standard deviation",
+      "status": "pass"
+    },
+    {
+      "name": "forged run with recomputed hash but edited mean is rejected",
+      "status": "pass"
+    },
+    {
+      "name": "run with injected energy is rejected even if rehashed",
+      "status": "pass"
+    },
+    {
+      "name": "run with mismatched quality is rejected",
+      "status": "pass"
+    },
+    {
+      "name": "canonical hash ignores locale-sensitive ordering",
+      "status": "pass"
+    },
+    {
+      "name": "compare: quality mismatch is FAIL",
+      "status": "pass"
+    },
+    {
+      "name": "compare: environment mismatch is REVIEW_REQUIRED",
+      "status": "pass"
+    },
+    {
+      "name": "compare: three samples never PASS",
+      "status": "pass"
+    },
+    {
+      "name": "compare: clear speedup with enough samples PASSes and energy gates stay NOT_RUN",
+      "status": "pass"
+    },
+    {
+      "name": "compare: slower candidate beyond interval is FAIL",
+      "status": "pass"
+    },
+    {
+      "name": "compare: bootstrap interval is deterministic for the same inputs",
+      "status": "pass"
+    },
+    {
+      "name": "estimate rejects unknown fields",
+      "status": "pass"
+    },
+    {
+      "name": "estimate rejects both meter and modeled power",
+      "status": "pass"
+    },
+    {
+      "name": "estimate rejects bad currency even without a rate",
+      "status": "pass"
+    },
+    {
+      "name": "estimate rejects non-object assumptions",
+      "status": "pass"
+    },
+    {
+      "name": "html report escapes injected fields and carries CSP",
+      "status": "pass"
+    },
+    {
+      "name": "safeReadJson gives readable errors",
+      "status": "pass"
+    },
+    {
+      "name": "probe finds nothing on an empty PATH and reports no measured energy",
+      "status": "pass"
+    },
+    {
+      "name": "probe detects a fake instrument on PATH without executing it",
+      "status": "pass"
+    },
+    {
+      "name": "install --dry-run writes nothing and reports the plan",
+      "status": "pass"
+    },
+    {
+      "name": "install is idempotent",
+      "status": "pass"
+    },
+    {
+      "name": "install reports a missing target clearly",
+      "status": "pass"
+    },
+    {
+      "name": "skills: 20 skills, frontmatter matches directory, manifest agrees",
+      "status": "pass"
+    },
+    {
+      "name": "audit: all checks verified or not-run, verdict PASS, outputs MD/HTML/JSON",
+      "status": "pass"
+    },
+    {
+      "name": "cli --version and unknown command",
+      "status": "pass"
+    },
+    {
+      "name": "cli verify exits 1 on tamper and 0 on good file",
+      "status": "pass"
+    },
+    {
+      "name": "cli compare exits 1 on quality FAIL",
+      "status": "pass"
+    },
+    {
+      "name": "cli audit writes three files and exits 0",
+      "status": "pass"
+    },
+    {
+      "name": "cli doctor reports instruments and no measured energy",
+      "status": "pass"
+    },
+    {
+      "name": "cli install --dry-run leaves the target empty",
+      "status": "pass"
+    },
+    {
+      "name": "shipped example reports verify",
+      "status": "pass"
+    },
+    {
+      "name": "version is identical in package.json, engine, plugin manifest and CITATION.cff",
+      "status": "pass"
+    },
+    {
+      "name": "server rejects missing token",
+      "status": "pass"
+    },
+    {
+      "name": "server refuses invalid port",
+      "status": "pass"
+    },
+    {
+      "name": "server read-only, authenticated, constrained",
+      "status": "pass"
+    }
+  ]
+}

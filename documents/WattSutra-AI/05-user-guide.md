@@ -1,5 +1,12 @@
 # User guide
 
+<!-- fig:quickstart -->
+
+```mermaid
+flowchart LR
+  A[doctor] --> B[bench x2] --> C[compare] --> D[report]
+```
+
 ## Install
 
 Requires Node.js 22 or newer. No account, no key.
@@ -98,6 +105,15 @@ Ask your agent, for example: "Use wattsutra-prime to compare these two runs and 
 ```
 
 Commit a baseline produced on the **same runner type**. A different CPU model gives `REVIEW_REQUIRED`, never `PASS`.
+
+<!-- fig:ci -->
+
+```mermaid
+flowchart LR
+  P[Pull request] --> B[bench candidate] --> C{compare}
+  C -->|exit 0| M[merge allowed]
+  C -->|exit 1| X[blocked]
+```
 
 ## Reading a result correctly
 

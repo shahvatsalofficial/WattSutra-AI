@@ -4,6 +4,13 @@
 
 Teams claim "40% more efficient" or "greener" after a stopwatch test. Energy tools measure watts, profilers measure time, cost tools measure bills, and nothing stops the three being blended into one confident sentence. The result is claims that cannot be reproduced, defended or audited.
 
+<!-- fig:kinds -->
+
+```mermaid
+flowchart LR
+  M[measured] --- I[imported] --- O[modeled] --- N[not measured]
+```
+
 ## What WattSutra AI is
 
 An offline command-line tool plus 20 portable AI-agent skills that make performance claims **honest by construction**:
@@ -14,9 +21,16 @@ An offline command-line tool plus 20 portable AI-agent skills that make performa
 - It labels every number: `measured`, `imported-meter-observation`, `modeled` or `not measured`.
 - It writes the result as JSON, Markdown and HTML that a non-engineer can read.
 
+<!-- fig:pipeline -->
+
+```mermaid
+flowchart LR
+  A[Manifest] --> B[bench] --> C[verify] --> D[compare] --> E[report / audit]
+```
+
 ## What it is not
 
-It is **not** an energy meter, a carbon accounting product, an SCI-certified calculator or a cloud billing tool. Version 0.2.0 reads no hardware sensor. Energy, carbon and cost remain empty until you import a real meter reading or give explicit model inputs, and then they are labelled as imported or modeled.
+It is **not** an energy meter, a carbon accounting product, an SCI-certified calculator or a cloud billing tool. Version 0.2 reads no hardware sensor. Energy, carbon and cost remain empty until you import a real meter reading or give explicit model inputs, and then they are labelled as imported or modeled.
 
 ## Why trust it
 
@@ -44,7 +58,7 @@ The audit is a **self-audit**: reproducible evidence, not a third-party certific
 
 | Area | State |
 | --- | --- |
-| CLI and engine | Shipped, 0.2.0 |
+| CLI and engine | Shipped, 0.2.x |
 | Reports (JSON, MD, HTML, CSV) | Shipped |
 | Self-audit (18 checks) | Shipped |
 | 20 skills (17 core, 3 advisory) | Shipped as role instructions |
@@ -55,7 +69,7 @@ The audit is a **self-audit**: reproducible evidence, not a third-party certific
 
 ## Decisions needed from a sponsor
 
-None for 0.2.0. For the roadmap: approve a sandbox design before any arbitrary-code benchmark, and approve a trademark search before any marketing use of the name.
+None for 0.2. For the roadmap: approve a sandbox design before any arbitrary-code benchmark, and approve a trademark search before any marketing use of the name.
 
 ## Cost and risk
 

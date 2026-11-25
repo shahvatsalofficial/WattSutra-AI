@@ -1,0 +1,84 @@
+{
+  "schema": "wattsutra.scenarios/v1",
+  "toolVersion": "0.2.1",
+  "recordedAt": "2026-11-25T19:52:48.590Z",
+  "environment": {
+    "node": "v24.15.0",
+    "platform": "win32"
+  },
+  "scenarios": {
+    "s1": [
+      "$ wattsutra compare --baseline main.json --candidate branch.json",
+      "baseline  1.087 ms   candidate 0.240 ms",
+      "ratio     4.53x  (95% interval 3.75 to 5.87)",
+      "latency gate: PASS",
+      "energy gate:  NOT_RUN",
+      "carbon gate:  NOT_RUN",
+      "cost gate:    NOT_RUN",
+      "reason: Candidate faster with equal quality, matched environment and an interval that excludes no change",
+      "exit code: 0"
+    ],
+    "s2": [
+      "# simulated: a candidate whose result differs by one prime",
+      "$ wattsutra compare --baseline main.json --candidate wrong.json",
+      "baseline  1.087 ms   candidate 0.240 ms",
+      "ratio     4.53x  (95% interval 3.75 to 5.87)",
+      "latency gate: FAIL",
+      "energy gate:  NOT_RUN",
+      "carbon gate:  NOT_RUN",
+      "cost gate:    NOT_RUN",
+      "reason: Quality mismatch: results differ, so no performance claim is allowed",
+      "exit code: 1"
+    ],
+    "s3": [
+      "# simulated: candidate recorded on a different machine",
+      "$ wattsutra compare --baseline main.json --candidate runner.json",
+      "baseline  1.087 ms   candidate 0.240 ms",
+      "ratio     4.53x  (95% interval 3.75 to 5.87)",
+      "latency gate: REVIEW_REQUIRED",
+      "energy gate:  NOT_RUN",
+      "carbon gate:  NOT_RUN",
+      "cost gate:    NOT_RUN",
+      "reason: Environment differs (cpuModel, logicalCores): comparison is exploratory only",
+      "exit code: 0"
+    ],
+    "s4": [
+      "# 1) someone edits the mean in the file",
+      "$ wattsutra verify --input edited.json",
+      "FAIL: Benchmark report integrity mismatch",
+      "exit code: 1",
+      "",
+      "# 2) they also recompute the hash",
+      "$ wattsutra verify --input forged.json",
+      "FAIL: Unsupported benchmark schema: measurements.wallMs.mean does not match its raw samples",
+      "exit code: 1"
+    ],
+    "s5": [
+      "# nothing supplied: nothing invented",
+      "$ wattsutra estimate --run branch.json --assumptions empty.json",
+      "unknown: energyKWh: no meter observation or explicitly supplied average power",
+      "unknown: operationalGCO2e: carbon intensity not provided",
+      "unknown: cost: rate not supplied",
+      "",
+      "# your assumptions (illustrative values)",
+      "$ wattsutra estimate --run branch.json --assumptions model.json",
+      "energyKWh:        4.329e-9  (modeled)",
+      "operationalGCO2e: 1.645e-6  (modeled)",
+      "unknown: cost: rate not supplied"
+    ],
+    "s6": [
+      "$ wattsutra estimate --run branch.json --assumptions meter.json",
+      "value:  0.0004 kWh",
+      "kind:   imported-meter-observation",
+      "source: wall plug meter, 60 s window (example)",
+      "attributionUnverified: true"
+    ],
+    "s7": [
+      "$ wattsutra install --target my-project --ide claude --dry-run",
+      "dryRun: true",
+      "skill files planned: 20",
+      "would create: 20",
+      "files written: none"
+    ]
+  }
+}

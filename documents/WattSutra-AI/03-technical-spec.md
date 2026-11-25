@@ -2,7 +2,7 @@
 
 ## Runtime and layout
 
-Node.js 20 or newer, ES modules, standard library only (`node:fs`, `node:path`, `node:os`, `node:crypto`, `node:http`, `node:test`). No build step, no `node_modules` at runtime.
+Node.js 22 or newer, ES modules, standard library only (`node:fs`, `node:path`, `node:os`, `node:crypto`, `node:http`, `node:test`). No build step, no `node_modules` at runtime.
 
 | Path | Purpose |
 | --- | --- |
@@ -68,6 +68,21 @@ The interval is not a hypothesis test. No significance is claimed anywhere.
 
 Energy, carbon and cost gates are always `NOT_RUN` in `compare`.
 
+<!-- fig:gate -->
+
+```mermaid
+flowchart TD
+  Q{Same answer?} -->|no| F[FAIL]
+  Q -->|yes| E{Same environment?}
+  E -->|no| R[REVIEW_REQUIRED]
+  E -->|yes| N{5 or more samples?}
+  N -->|no| R
+  N -->|yes| I{Interval excludes 1x?}
+  I -->|no| R
+  I -->|slower| F
+  I -->|faster| P[PASS]
+```
+
 ## Workload
 
 `prime-sum`, n up to 100000. Variants `trial` (trial division) and `sieve` (Eratosthenes). Both must equal the reference `{count, sum}` before and during measurement. This is an educational fixed workload, not a representative AI inference benchmark.
@@ -101,4 +116,4 @@ Energy, carbon and cost gates are always `NOT_RUN` in `compare`.
 
 ## Extension points (planned)
 
-Instrument adapters (capability negotiation, timeout, cancellation, permission metadata), sandboxed workload runner, billing importers, signing. None exists in 0.2.0; do not document them as working.
+Instrument adapters (capability negotiation, timeout, cancellation, permission metadata), sandboxed workload runner, billing importers, signing. None exists in 0.2; do not document them as working.

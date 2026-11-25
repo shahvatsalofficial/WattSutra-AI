@@ -2,6 +2,8 @@
 
 > **Read this first.** This audit was produced by the tool's own author and by the tool itself. It is reproducible evidence, **not a third-party certificate**. The way to make it independent is to run it yourself and read the source. Every result below can be regenerated with one command.
 
+<!-- fig:audit -->
+
 ## How to reproduce
 
 ```bash
@@ -62,6 +64,8 @@ Source: [`evidence/samples/audit.json`](evidence/samples/audit.json). Totals: **
 | Energy, carbon, cost gates | NOT_RUN |
 
 Reading this honestly: the interval is still wide because only 12 sub-millisecond samples were taken on a shared laptop; the 42.6% coefficient of variation shows how noisy that is (an earlier run of the same command gave 7%). This is exactly why the gate uses an interval and not a single ratio. The result supports "sieve is clearly faster than trial division for this n on this machine". It supports **nothing** about energy.
+
+<!-- fig:samples -->
 
 ### Modeled estimate in the same run
 
